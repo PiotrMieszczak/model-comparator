@@ -1,12 +1,3 @@
-### Frontend (React)
-- **Framework**: React 18 with TypeScript
-- **UI Library**: HeroUI (Modern React component library)
-- **State Management**: React Context + useReducer  
-- **Routing**: React Router v6
-- **HTTP Client**: Axios
-- **Charts**: Recharts for usage analytics
-- **Icons**: Lucide React (included with HeroUI)# AI Model Comparison App
-
 A full-stack web application that allows users to compare different AI models (OpenAI GPT, Anthropic Claude, Google Gemini, etc.) by sending the same prompt to multiple models and analyzing their responses, token usage, and costs.
 
 ## 🎯 Project Summary
@@ -238,7 +229,14 @@ graph TB
 
 ## 🛠️ Tech Stack
 
-
+### Frontend (React)
+- **Framework**: React 18 with TypeScript
+- **UI Library**: HeroUI (Modern React component library)
+- **State Management**: React Context + useReducer  
+- **Routing**: React Router v6
+- **HTTP Client**: Axios
+- **Charts**: Recharts for usage analytics
+- **Icons**: Lucide React (included with HeroUI)# AI Model Comparison App
 
 ### Backend (Node.js)
 - **Framework**: Express.js with TypeScript
