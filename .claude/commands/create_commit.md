@@ -38,6 +38,3 @@ If the change is complex, provide a longer body explaining the "what" and "why" 
 
 ### Breaking Changes
 If there are any breaking changes, add a `BREAKING CHANGE:` footer.
-
-## Output Requirements
-Provide only the raw commit message text, with no extra explanations, introductions, or markdown formatting.
