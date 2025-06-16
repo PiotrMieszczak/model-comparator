@@ -1,96 +1,365 @@
-# ModelComparator
+### Frontend (React)
+- **Framework**: React 18 with TypeScript
+- **UI Library**: HeroUI (Modern React component library)
+- **State Management**: React Context + useReducer  
+- **Routing**: React Router v6
+- **HTTP Client**: Axios
+- **Charts**: Recharts for usage analytics
+- **Icons**: Lucide React (included with HeroUI)# AI Model Comparison App
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A full-stack web application that allows users to compare different AI models (OpenAI GPT, Anthropic Claude, Google Gemini, etc.) by sending the same prompt to multiple models and analyzing their responses, token usage, and costs.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## 🎯 Project Summary
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+This application helps developers and AI enthusiasts:
+- **Compare AI Models**: Send the same prompt to multiple AI providers simultaneously
+- **Track Usage & Costs**: Monitor token consumption and associated costs across different models
+- **Manage API Keys**: Securely store and manage API keys for various AI providers
+- **Analyze Performance**: View detailed comparisons of response quality, speed, and efficiency
+- **User Management**: Secure authentication with Google OAuth and traditional email/password
 
-## Run tasks
+### Key Features
+- 🔐 **Authentication**: Google OAuth + Email/Password login
+- 🤖 **Multi-Provider Support**: OpenAI, Anthropic, Google Gemini, Cohere
+- 📊 **Usage Analytics**: Token tracking, cost analysis, response time metrics
+- 🔑 **API Key Management**: Secure storage and management of provider API keys
+- 📱 **Modern UI**: Beautiful interface built with HeroUI components and real-time comparisons
+- 💾 **Data Persistence**: Save comparison history and export results
 
-To run tasks with Nx use:
+## 🏗️ Architecture Overview
 
-```sh
-npx nx <target> <project-name>
+This application follows **Domain-Driven Design (DDD)** principles to ensure maintainable, scalable code organization.
+
+### High-Level Architecture
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   React Web     │    │  Express.js     │    │   PostgreSQL    │
+│   Frontend      │◄──►│   Backend       │◄──►│   Database      │
+│  (Port: 4200)   │    │  (Port: 3333)   │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                              │
+                              ▼
+                    ┌─────────────────┐
+                    │  External APIs  │
+                    │ • OpenAI        │
+                    │ • Anthropic     │
+                    │ • Google        │ 
+                    └─────────────────┘
 ```
 
-For example:
+### Domain-Driven Design Structure
 
-```sh
-npx nx build myproject
+Our application is organized around these core **domains**:
+
+#### 🔐 **Authentication Domain**
+- Handles user registration, login, and session management
+- Manages Google OAuth integration
+- JWT token generation and validation
+
+#### 🤖 **AI Provider Domain** 
+- Integrates with different AI APIs (OpenAI, Anthropic, etc.)
+- Handles token counting and cost calculations
+- Manages rate limiting and error handling
+
+#### 🔑 **API Key Management Domain**
+- Securely stores and encrypts user API keys
+- Validates and tests API key functionality
+- Manages key rotation and access control
+
+#### 📊 **Comparison Domain**
+- Orchestrates multi-model comparisons
+- Aggregates results and metrics
+- Handles comparison history and analytics
+
+#### 👤 **User Domain**
+- Manages user profiles and preferences
+- Tracks usage statistics and quotas
+- Handles user settings and dashboard data
+
+## 📁 Project Structure (NX Monorepo)
+
+```
+model-comparator/
+│
+├── 📱 apps/                          # Application layer
+│   ├── web/                          # React Frontend Application
+│   │   ├── src/
+│   │   │   ├── app/
+│   │   │   │   ├── components/       # UI Components
+│   │   │   │   ├── pages/           # Page Components
+│   │   │   │   ├── hooks/           # Custom React Hooks
+│   │   │   │   └── stores/          # State Management
+│   │   │   ├── assets/              # Static Assets
+│   │   │   └── main.tsx             # App Entry Point
+│   │   └── project.json
+│   │
+│   └── api/                          # Express.js Backend Application
+│       ├── src/
+│       │   ├── domains/             # DDD Domain Logic
+│       │   │   ├── auth/            # Authentication Domain
+│       │   │   ├── ai-providers/    # AI Provider Domain
+│       │   │   ├── api-keys/        # API Key Management Domain
+│       │   │   ├── comparisons/     # Comparison Domain
+│       │   │   └── users/           # User Domain
+│       │   ├── infrastructure/      # External Dependencies
+│       │   │   ├── database/        # Database Configuration
+│       │   │   ├── external-apis/   # Third-party API clients
+│       │   │   └── security/        # Security utilities
+│       │   ├── presentation/        # API Layer
+│       │   │   ├── routes/          # Express Routes
+│       │   │   ├── middleware/      # Custom Middleware
+│       │   │   └── validators/      # Request Validation
+│       │   └── main.ts              # Server Entry Point
+│       └── project.json
+│
+├── 📚 libs/                          # Shared Libraries
+│   ├── shared-types/                 # TypeScript Interfaces & Types
+│   │   └── src/lib/
+│   │       ├── auth.types.ts
+│   │       ├── user.types.ts
+│   │       ├── ai-provider.types.ts
+│   │       └── comparison.types.ts
+│   │
+│   ├── shared-utils/                 # Common Utilities
+│   │   └── src/lib/
+│   │       ├── validation.ts
+│   │       ├── encryption.ts
+│   │       ├── date-helpers.ts
+│   │       └── api-client.ts
+│   │
+│   ├── ui-components/                # Custom React Components (HeroUI-based)
+│   │   └── src/lib/
+│   │       ├── CustomButton/     # Extended HeroUI Button
+│   │       ├── ComparisonTable/  # Data table for AI comparisons
+│   │       ├── UsageChart/       # Analytics charts
+│   │       └── Layout/           # App layout components
+│   │
+│   ├── auth/                         # Authentication Business Logic
+│   │   └── src/lib/
+│   │       ├── auth.service.ts
+│   │       ├── jwt.service.ts
+│   │       └── oauth.service.ts
+│   │
+│   ├── database/                     # Database Access Layer
+│   │   └── src/lib/
+│   │       ├── entities/            # Database Models
+│   │       ├── repositories/        # Data Access Objects
+│   │       └── migrations/          # Database Migrations
+│   │
+│   └── ai-providers/                 # AI Provider Integration
+│       └── src/lib/
+│           ├── providers/           # Individual Provider Classes
+│           ├── comparison.service.ts
+│           └── token-calculator.ts
+│
+├── 🐳 Infrastructure Files
+│   ├── Dockerfile                    # Container Configuration
+│   ├── nginx.conf                   # Nginx Reverse Proxy Config
+│   ├── railway.toml                 # Railway Deployment Config
+│   └── start.sh                     # Container Startup Script
+│
+├── 🔄 CI/CD Configuration
+│   └── .github/workflows/
+│       └── deploy.yml               # GitHub Actions Pipeline
+│
+├── 📋 Configuration Files
+│   ├── nx.json                      # NX Workspace Configuration
+│   ├── tsconfig.base.json           # TypeScript Base Configuration
+│   ├── package.json                 # Dependencies & Scripts
+│   └── README.md                    # This file
+└── 📝 Documentation
+    ├── docs/
+    │   ├── api/                     # API Documentation
+    │   ├── deployment/              # Deployment Guides
+    │   └── development/             # Development Setup
+    └── .env.example                 # Environment Variables Template
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+## 🔄 CI/CD Pipeline Overview
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Our continuous integration and deployment pipeline ensures code quality and automated deployments:
 
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
+```mermaid
+graph TB
+    A[👨‍💻 Developer] -->|git push| B[📚 GitHub Repository]
+    
+    B --> C{🔍 GitHub Actions Trigger}
+    
+    C --> D[🧪 Test Stage]
+    D --> D1[📦 Install Dependencies]
+    D1 --> D2[🔍 Run Linting]
+    D2 --> D3[🧪 Unit Tests]
+    D3 --> D4[🏗️ Build Apps]
+    
+    D4 --> E{✅ Tests Pass?}
+    E -->|❌ No| F[❌ Pipeline Failed]
+    E -->|✅ Yes| G[🚀 Deploy Stage]
+    
+    G --> G1[🏗️ Build Docker Image]
+    G1 --> G2[🚢 Push to Railway]
+    G2 --> G3[🔄 Health Check]
+    
+    G3 --> H{💚 Deployment Success?}
+    H -->|❌ No| I[🔄 Rollback]
+    H -->|✅ Yes| J[✅ Deployment Complete]
+    
+    F --> K[📧 Notify Developer]
+    I --> K
+    J --> L[🌐 Live Application]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style D fill:#fff3e0
+    style G fill:#e8f5e8
+    style L fill:#e0f2f1
 ```
 
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
+### Pipeline Stages Explained
 
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
+#### 🧪 **Test Stage** (Runs on every push/PR)
+1. **Install Dependencies**: Download all required npm packages
+2. **Linting**: Check code style and potential issues with ESLint
+3. **Unit Tests**: Run all unit tests for both frontend and backend
+4. **Build Verification**: Ensure both apps can be built successfully
 
-# Generate a library
-npx nx g @nx/react:lib some-lib
+#### 🚀 **Deploy Stage** (Runs only on main branch)
+1. **Docker Build**: Create production-ready container image
+2. **Railway Deploy**: Push image to Railway platform
+3. **Health Check**: Verify application is running correctly
+4. **Success/Rollback**: Complete deployment or revert on failure
+
+#### 📊 **Quality Gates**
+- ✅ All tests must pass (>= 80% coverage)
+- ✅ No linting errors
+- ✅ Successful build for both apps
+- ✅ Security vulnerability checks
+- ✅ Performance benchmarks
+
+## 🛠️ Tech Stack
+
+
+
+### Backend (Node.js)
+- **Framework**: Express.js with TypeScript
+- **Database**: PostgreSQL with node-postgres
+- **Authentication**: JWT + Passport.js (Google OAuth)
+- **Validation**: Joi for request validation
+- **Security**: Helmet, CORS, bcrypt for password hashing
+- **API Documentation**: OpenAPI/Swagger
+
+### Infrastructure
+- **Hosting**: Railway (Full-stack deployment)
+- **Database**: Railway PostgreSQL
+- **CI/CD**: GitHub Actions
+- **Containerization**: Docker
+- **Reverse Proxy**: Nginx
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
+- Git
+- Railway CLI (for deployment)
+
+### Initial Setup
+```bash
+# Clone the repository
+git clone <repository-url>
+cd ai-model-compare
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your API keys and configuration
+
+# Start development servers
+npm run dev
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+### Development Commands
+```bash
+# Start both frontend and backend
+npm run dev
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+# Run tests
+npm run test
 
-## Set up CI!
+# Build for production
+npm run build
 
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
+# Deploy to Railway
+npm run deploy
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+## 🔐 Environment Variables
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Create a `.env` file with the following variables:
 
-### Step 2
+```env
+# Database
+DATABASE_URL=postgresql://...
 
-Use the following command to configure a CI workflow for your workspace:
+# Authentication
+JWT_SECRET=your-secret-key
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
 
-```sh
-npx nx g ci-workflow
+# AI Provider APIs
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+GOOGLE_API_KEY=AI...
+COHERE_API_KEY=...
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 📚 Domain-Driven Design Explanation
 
-## Install Nx Console
+For junior developers new to DDD, here's what each domain represents:
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+### 🎯 **Domain** = Business Area
+Think of each domain as a specific area of our business logic. Each domain:
+- Has its own set of rules and responsibilities
+- Contains related functionality grouped together  
+- Can be developed and tested independently
+- Has clear boundaries with other domains
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### 🏗️ **How Domains Work Together**
+```
+User wants to compare AI models
+         ↓
+1. Authentication Domain → Verify user is logged in
+2. API Key Domain → Get user's stored API keys  
+3. AI Provider Domain → Call external APIs
+4. Comparison Domain → Process and save results
+5. User Domain → Update usage statistics
+```
 
-## Useful links
+### 📁 **Domain Structure Pattern**
+Each domain follows this consistent pattern:
+```
+domain-name/
+├── entities/          # Core business objects
+├── services/          # Business logic
+├── repositories/      # Data access
+└── types/            # Domain-specific types
+```
 
-Learn more:
+This organization makes the codebase:
+- **Easier to understand**: Related code is grouped together
+- **Easier to test**: Each domain can be tested in isolation
+- **Easier to maintain**: Changes in one domain don't break others
+- **Easier to scale**: New features can be added as new domains
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🤝 Contributing
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
