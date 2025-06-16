@@ -22,8 +22,7 @@ This is an AI Model Comparison Application built as a full-stack TypeScript mono
 ```
 apps/
 ├── web/          # React frontend (port 4200)
-├── api/          # Express backend (port 3000)  
-└── web-e2e/      # Playwright E2E tests
+└── api/          # Express backend (port 3000)  
 ```
 
 ## Essential Commands
@@ -59,9 +58,6 @@ bun nx run-many --target=build --projects=web,api
 # Run frontend unit tests
 bun nx test web
 
-# Run E2E tests (requires built/running app)
-bun nx e2e web-e2e
-
 # Run all tests
 bun nx run-many --target=test --all
 ```
@@ -89,10 +85,9 @@ The README outlines an ambitious DDD architecture with domains like:
 ### Port Configuration
 - **Frontend Dev**: 4200 (serve), 4300 (preview)
 - **Backend**: 3000 (configurable via PORT env var)
-- **E2E Tests**: Target preview server on port 4300
 
 ### Key Configuration Files
-- `nx.json` - Nx workspace with React Router, Vite, and Playwright plugins
+- `nx.json` - Nx workspace with React Router and Vite plugins
 - `tsconfig.base.json` - Base TypeScript config (ES2015 target, decorators enabled)
 - `vitest.workspace.ts` - Test workspace configuration
 - `.prettierrc` - Single quotes formatting
@@ -112,7 +107,7 @@ git commit -m "feat: add new feature"
 
 1. **Start Development**: Run both apps with `bun nx run-many --target=serve --projects=web,api`
 2. **Make Changes**: Hot reload enabled for both frontend (Vite) and backend
-3. **Run Tests**: Use `bun nx test web` for units, `bun nx e2e web-e2e` for E2E
+3. **Run Tests**: Use `bun nx test web` for unit tests
 4. **Type Check**: Run `bun nx typecheck web` and `bun nx typecheck api` before commits
 5. **Commit Changes**: Use `bun run commit` for interactive conventional commits
 6. **Build**: Use `bun nx build web` and `bun nx build api` to verify production builds
@@ -125,3 +120,12 @@ git commit -m "feat: add new feature"
 - **Monorepo Benefits**: Shared TypeScript config, consistent tooling across apps
 - **Commit Validation**: All commits must follow conventional commit format
 - **Git Hooks**: Husky enforces commit message validation via commitlint
+
+## Commit Guidelines
+
+**IMPORTANT**: When creating commits, NEVER include any indication that they were created by Claude or AI assistance. All commits should appear as if they were made directly by the repository owner. Do not include:
+- "🤖 Generated with [Claude Code]" footers
+- "Co-Authored-By: Claude" attributions
+- Any other AI-generated signatures or attributions
+
+Commits should use only the configured git user credentials and conventional commit format.
