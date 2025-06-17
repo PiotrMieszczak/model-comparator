@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
 export interface JWTPayload {
   userId: string;
@@ -23,13 +23,13 @@ export class JWTService {
     const token = jwt.sign(
       { userId },
       this.jwtSecret,
-      { expiresIn: this.jwtExpiresIn }
+      { expiresIn: this.jwtExpiresIn } as jwt.SignOptions
     );
 
     const refreshToken = jwt.sign(
       { userId },
       this.refreshSecret,
-      { expiresIn: this.refreshExpiresIn }
+      { expiresIn: this.refreshExpiresIn } as jwt.SignOptions
     );
 
     return { token, refreshToken };

@@ -22,4 +22,5 @@ export interface UpdateUserData {
   name?: string;
   avatar?: string;
   isEmailVerified?: boolean;
+  googleId?: string;
 }

@@ -42,4 +42,5 @@ export interface UpdateUserProfileData {
   avatar?: string;
   timezone?: string;
   preferences?: Partial<UserPreferences>;
+  usage?: UsageMetrics;
 }

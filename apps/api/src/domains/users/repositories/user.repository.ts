@@ -104,6 +104,10 @@ export class PostgresUserRepository implements UserRepository {
       setParts.push(`preferences = $${valueIndex++}`);
       values.push(JSON.stringify(data.preferences));
     }
+    if (data.usage !== undefined) {
+      setParts.push(`usage = $${valueIndex++}`);
+      values.push(JSON.stringify(data.usage));
+    }
 
     setParts.push('updated_at = NOW()');
 
