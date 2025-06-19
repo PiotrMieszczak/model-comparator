@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@model-comparator/domains/auth": ["libs/domains/auth/src/index.ts"],
+      "@model-comparator/features/auth": ["libs/features/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -13,14 +13,13 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getAllByText } = render(
+  it('should have navigation links', () => {
+    const { getByText } = render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
     );
-    expect(
-      getAllByText(new RegExp('Welcome web', 'gi')).length > 0
-    ).toBeTruthy();
+    expect(getByText('Home')).toBeTruthy();
+    expect(getByText('Page 2')).toBeTruthy();
   });
 });
