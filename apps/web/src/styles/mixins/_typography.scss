@@ -1,0 +1,188 @@
+// Typography Mixins
+// Based on design-system-spec.md
+
+@use '../tokens/typography' as *;
+
+// Base font family mixin
+@mixin font-primary {
+  font-family: $font-family-primary;
+}
+
+@mixin font-mono {
+  font-family: $font-family-mono;
+}
+
+// Heading Mixins
+@mixin heading-h1 {
+  font-family: $font-family-primary;
+  font-size: $h1-font-size;
+  line-height: $h1-line-height;
+  font-weight: $h1-font-weight;
+  letter-spacing: $h1-letter-spacing;
+  margin: 0;
+}
+
+@mixin heading-h2 {
+  font-family: $font-family-primary;
+  font-size: $h2-font-size;
+  line-height: $h2-line-height;
+  font-weight: $h2-font-weight;
+  letter-spacing: $h2-letter-spacing;
+  margin: 0;
+}
+
+@mixin heading-h3 {
+  font-family: $font-family-primary;
+  font-size: $h3-font-size;
+  line-height: $h3-line-height;
+  font-weight: $h3-font-weight;
+  letter-spacing: $h3-letter-spacing;
+  margin: 0;
+}
+
+@mixin heading-h4 {
+  font-family: $font-family-primary;
+  font-size: $h4-font-size;
+  line-height: $h4-line-height;
+  font-weight: $h4-font-weight;
+  letter-spacing: $h4-letter-spacing;
+  margin: 0;
+}
+
+// Body Text Mixins
+@mixin text-large {
+  font-family: $font-family-primary;
+  font-size: $text-large-font-size;
+  line-height: $text-large-line-height;
+  font-weight: $text-large-font-weight;
+  margin: 0;
+}
+
+@mixin text-base {
+  font-family: $font-family-primary;
+  font-size: $text-base-font-size;
+  line-height: $text-base-line-height;
+  font-weight: $text-base-font-weight;
+  margin: 0;
+}
+
+@mixin text-small {
+  font-family: $font-family-primary;
+  font-size: $text-small-font-size;
+  line-height: $text-small-line-height;
+  font-weight: $text-small-font-weight;
+  margin: 0;
+}
+
+@mixin text-xs {
+  font-family: $font-family-primary;
+  font-size: $text-xs-font-size;
+  line-height: $text-xs-line-height;
+  font-weight: $text-xs-font-weight;
+  margin: 0;
+}
+
+// Specialized Text Mixins
+@mixin text-button {
+  font-family: $font-family-primary;
+  font-size: $button-font-size;
+  line-height: $button-line-height;
+  font-weight: $button-font-weight;
+  letter-spacing: $button-letter-spacing;
+  text-transform: none;
+}
+
+@mixin text-label {
+  font-family: $font-family-primary;
+  font-size: $label-font-size;
+  line-height: $label-line-height;
+  font-weight: $label-font-weight;
+  margin: 0;
+}
+
+@mixin text-input {
+  font-family: $font-family-primary;
+  font-size: $input-font-size;
+  line-height: $input-line-height;
+  font-weight: $input-font-weight;
+}
+
+@mixin text-caption {
+  font-family: $font-family-primary;
+  font-size: $caption-font-size;
+  line-height: $caption-line-height;
+  font-weight: $caption-font-weight;
+  margin: 0;
+}
+
+// Utility Mixins
+@mixin text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin text-truncate-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin text-left {
+  text-align: left;
+}
+
+@mixin text-right {
+  text-align: right;
+}
+
+// Font Weight Utilities
+@mixin font-light {
+  font-weight: $font-weight-light;
+}
+
+@mixin font-normal {
+  font-weight: $font-weight-normal;
+}
+
+@mixin font-medium {
+  font-weight: $font-weight-medium;
+}
+
+@mixin font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+@mixin font-bold {
+  font-weight: $font-weight-bold;
+}
+
+// Responsive Typography Mixins
+@mixin responsive-heading-h1 {
+  @include heading-h4; // Mobile: smaller size
+  
+  @media (min-width: 768px) {
+    @include heading-h1; // Desktop: full size
+  }
+}
+
+@mixin responsive-heading-h2 {
+  @include heading-h3; // Mobile: smaller size
+  
+  @media (min-width: 768px) {
+    @include heading-h2; // Desktop: full size
+  }
+}
+
+@mixin responsive-text {
+  @include text-small; // Mobile: smaller text
+  
+  @media (min-width: 768px) {
+    @include text-base; // Desktop: base text
+  }
+}

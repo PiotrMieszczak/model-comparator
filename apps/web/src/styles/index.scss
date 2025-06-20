@@ -1,0 +1,132 @@
+// Design System SCSS Library
+// Main entry point for all design tokens and mixins
+
+// Use all design tokens and mixins
+@use 'tokens' as *;
+@use 'mixins' as *;
+
+// Global base styles
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+// CSS Reset and base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @include font-primary;
+  @include text-base;
+  color: $color-text-primary;
+  background-color: $color-background;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+// Utility Classes for quick styling
+
+// Typography utilities
+.text-h1 { @include heading-h1; }
+.text-h2 { @include heading-h2; }
+.text-h3 { @include heading-h3; }
+.text-h4 { @include heading-h4; }
+.text-large { @include text-large; }
+.text-base { @include text-base; }
+.text-small { @include text-small; }
+.text-xs { @include text-xs; }
+.text-button { @include text-button; }
+.text-label { @include text-label; }
+.text-caption { @include text-caption; }
+
+// Typography utilities
+.font-light { @include font-light; }
+.font-normal { @include font-normal; }
+.font-medium { @include font-medium; }
+.font-semibold { @include font-semibold; }
+.font-bold { @include font-bold; }
+
+.text-center { @include text-center; }
+.text-left { @include text-left; }
+.text-right { @include text-right; }
+.text-truncate { @include text-truncate; }
+
+// Color utilities
+.text-primary { color: $color-text-primary; }
+.text-secondary { color: $color-text-secondary; }
+.text-muted { color: $color-text-muted; }
+.text-success { color: $color-success; }
+.text-warning { color: $color-warning; }
+
+.bg-primary { background-color: $color-primary; }
+.bg-success { background-color: $color-success; }
+.bg-warning { background-color: $color-warning; }
+.bg-surface { background-color: $color-surface; }
+.bg-background { background-color: $color-background; }
+
+
+// Layout utilities
+.container { @include container; }
+.container-narrow { @include container-narrow; }
+.container-wide { @include container-wide; }
+
+.flex-center { @include flex-center; }
+.flex-between { @include flex-between; }
+.flex-start { @include flex-start; }
+.flex-end { @include flex-end; }
+.flex-column { @include flex-column; }
+.flex-column-center { @include flex-column-center; }
+
+.grid { @include grid; }
+.grid-auto-fit { @include grid-auto-fit; }
+.responsive-grid { @include responsive-grid; }
+
+.section { @include section; }
+.section-narrow { @include section-narrow; }
+.section-wide { @include section-wide; }
+
+.stack { @include stack; }
+.stack-large { @include stack-large; }
+.stack-small { @include stack-small; }
+
+// Spacing utilities (using design system scale)
+@each $name, $value in $spacing-scale {
+  .m-#{$name} { margin: $value !important; }
+  .mt-#{$name} { margin-top: $value !important; }
+  .mb-#{$name} { margin-bottom: $value !important; }
+  .ml-#{$name} { margin-left: $value !important; }
+  .mr-#{$name} { margin-right: $value !important; }
+  .mx-#{$name} { margin-left: $value !important; margin-right: $value !important; }
+  .my-#{$name} { margin-top: $value !important; margin-bottom: $value !important; }
+  
+  .p-#{$name} { padding: $value !important; }
+  .pt-#{$name} { padding-top: $value !important; }
+  .pb-#{$name} { padding-bottom: $value !important; }
+  .pl-#{$name} { padding-left: $value !important; }
+  .pr-#{$name} { padding-right: $value !important; }
+  .px-#{$name} { padding-left: $value !important; padding-right: $value !important; }
+  .py-#{$name} { padding-top: $value !important; padding-bottom: $value !important; }
+  
+  .gap-#{$name} { gap: $value !important; }
+}
+
+// Responsive utilities
+@media (min-width: 768px) {
+  .md\:text-h1 { @include heading-h1; }
+  .md\:text-h2 { @include heading-h2; }
+  .md\:flex-row { flex-direction: row !important; }
+  .md\:flex-column { flex-direction: column !important; }
+  .md\:hidden { display: none !important; }
+  .md\:block { display: block !important; }
+}
+
+@media (max-width: 767px) {
+  .mobile\:hidden { display: none !important; }
+  .mobile\:block { display: block !important; }
+}

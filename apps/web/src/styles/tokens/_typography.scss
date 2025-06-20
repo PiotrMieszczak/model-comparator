@@ -1,0 +1,120 @@
+// Design System Typography Tokens
+// Based on design-system-spec.md
+
+// Font Families
+$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-mono: 'JetBrains Mono', 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Heading Typography Tokens
+$h1-font-size: 30px;
+$h1-line-height: 36px;
+$h1-font-weight: $font-weight-bold;
+$h1-letter-spacing: -0.025em;
+
+$h2-font-size: 36px;
+$h2-line-height: 45px;
+$h2-font-weight: $font-weight-bold;
+$h2-letter-spacing: -0.025em;
+
+$h3-font-size: 24px;
+$h3-line-height: 32px;
+$h3-font-weight: $font-weight-semibold;
+$h3-letter-spacing: -0.025em;
+
+$h4-font-size: 20px;
+$h4-line-height: 28px;
+$h4-font-weight: $font-weight-semibold;
+$h4-letter-spacing: -0.025em;
+
+// Body Typography Tokens
+$text-large-font-size: 20px;
+$text-large-line-height: 32px;
+$text-large-font-weight: $font-weight-normal;
+
+$text-base-font-size: 16px;
+$text-base-line-height: 24px;
+$text-base-font-weight: $font-weight-normal;
+
+$text-small-font-size: 14px;
+$text-small-line-height: 20px;
+$text-small-font-weight: $font-weight-normal;
+
+$text-xs-font-size: 12px;
+$text-xs-line-height: 16px;
+$text-xs-font-weight: $font-weight-normal;
+
+// Button Typography
+$button-font-size: 16px;
+$button-font-weight: $font-weight-semibold;
+$button-line-height: 1;
+$button-letter-spacing: 0.025em;
+
+// Label Typography
+$label-font-size: 14px;
+$label-font-weight: $font-weight-medium;
+$label-line-height: 20px;
+
+// Input Typography
+$input-font-size: 16px;
+$input-font-weight: $font-weight-normal;
+$input-line-height: 24px;
+
+// Caption Typography
+$caption-font-size: 12px;
+$caption-font-weight: $font-weight-normal;
+$caption-line-height: 16px;
+
+// Typography Scale Map
+$typography-scale: (
+  h1: (
+    font-size: $h1-font-size,
+    line-height: $h1-line-height,
+    font-weight: $h1-font-weight,
+    letter-spacing: $h1-letter-spacing,
+  ),
+  h2: (
+    font-size: $h2-font-size,
+    line-height: $h2-line-height,
+    font-weight: $h2-font-weight,
+    letter-spacing: $h2-letter-spacing,
+  ),
+  h3: (
+    font-size: $h3-font-size,
+    line-height: $h3-line-height,
+    font-weight: $h3-font-weight,
+    letter-spacing: $h3-letter-spacing,
+  ),
+  h4: (
+    font-size: $h4-font-size,
+    line-height: $h4-line-height,
+    font-weight: $h4-font-weight,
+    letter-spacing: $h4-letter-spacing,
+  ),
+  text-large: (
+    font-size: $text-large-font-size,
+    line-height: $text-large-line-height,
+    font-weight: $text-large-font-weight,
+  ),
+  text-base: (
+    font-size: $text-base-font-size,
+    line-height: $text-base-line-height,
+    font-weight: $text-base-font-weight,
+  ),
+  text-small: (
+    font-size: $text-small-font-size,
+    line-height: $text-small-line-height,
+    font-weight: $text-small-font-weight,
+  ),
+  text-xs: (
+    font-size: $text-xs-font-size,
+    line-height: $text-xs-line-height,
+    font-weight: $text-xs-font-weight,
+  ),
+);

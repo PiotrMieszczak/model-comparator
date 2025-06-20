@@ -1,0 +1,125 @@
+// CSS Variables Generator
+// Automatically creates CSS custom properties from SCSS tokens
+
+@use 'colors' as *;
+@use 'spacing' as *;
+
+// Mixin to generate CSS variables from color maps
+@mixin generate-color-variables($prefix, $color-map) {
+  @each $shade, $value in $color-map {
+    --#{$prefix}-#{$shade}: #{$value};
+  }
+}
+
+// Mixin to generate CSS variables from spacing map
+@mixin generate-spacing-variables($spacing-map) {
+  @each $name, $value in $spacing-map {
+    --spacing-#{$name}: #{$value};
+  }
+}
+
+// Root CSS variables
+:root {
+  // Color variables - Primary colors
+  @include generate-color-variables('primary', $primary-colors);
+  
+  // Color variables - Success colors
+  @include generate-color-variables('success', $success-colors);
+  
+  // Color variables - Warning colors
+  @include generate-color-variables('warning', $warning-colors);
+  
+  // Color variables - Gray colors
+  @include generate-color-variables('gray', $gray-colors);
+  
+  // Additional color variables
+  --white: #{$white};
+  
+  // Semantic color variables
+  --color-primary: #{$color-primary};
+  --color-primary-light: #{$color-primary-light};
+  --color-primary-dark: #{$color-primary-dark};
+  
+  --color-success: #{$color-success};
+  --color-success-light: #{$color-success-light};
+  --color-success-dark: #{$color-success-dark};
+  
+  --color-warning: #{$color-warning};
+  --color-warning-light: #{$color-warning-light};
+  --color-warning-dark: #{$color-warning-dark};
+  
+  --color-background: #{$color-background};
+  --color-surface: #{$color-surface};
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted: #{$color-text-muted};
+  --color-border: #{$color-border};
+  --color-border-light: #{$color-border-light};
+  
+  // Spacing variables
+  @include generate-spacing-variables($spacing-scale);
+  
+  // Individual spacing variables
+  --spacing-1: #{$spacing-1};
+  --spacing-2: #{$spacing-2};
+  --spacing-3: #{$spacing-3};
+  --spacing-4: #{$spacing-4};
+  --spacing-5: #{$spacing-5};
+  --spacing-6: #{$spacing-6};
+  --spacing-7: #{$spacing-7};
+  --spacing-8: #{$spacing-8};
+  --spacing-10: #{$spacing-10};
+  --spacing-12: #{$spacing-12};
+  --spacing-16: #{$spacing-16};
+  --spacing-20: #{$spacing-20};
+  --spacing-24: #{$spacing-24};
+  
+  // Border radius variables
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --radius-2xl: #{$radius-2xl};
+  --radius-3xl: #{$radius-3xl};
+  --radius-full: #{$radius-full};
+  --border-radius: #{$border-radius};
+  
+  // Shadow variables
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+  --shadow-2xl: #{$shadow-2xl};
+  --shadow-3xl: #{$shadow-3xl};
+  
+  // Z-index variables
+  --z-index-dropdown: #{$z-index-dropdown};
+  --z-index-sticky: #{$z-index-sticky};
+  --z-index-fixed: #{$z-index-fixed};
+  --z-index-modal-backdrop: #{$z-index-modal-backdrop};
+  --z-index-modal: #{$z-index-modal};
+  --z-index-popover: #{$z-index-popover};
+  --z-index-tooltip: #{$z-index-tooltip};
+}
+
+// Helper functions to use CSS variables in SCSS
+@function css-var($name) {
+  @return var(--#{$name});
+}
+
+// Specific helper functions for common use cases
+@function color-var($color-name) {
+  @return var(--#{$color-name});
+}
+
+@function spacing-var($spacing-name) {
+  @return var(--spacing-#{$spacing-name});
+}
+
+@function radius-var($radius-name) {
+  @return var(--radius-#{$radius-name});
+}
+
+@function shadow-var($shadow-name) {
+  @return var(--shadow-#{$shadow-name});
+}

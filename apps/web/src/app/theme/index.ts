@@ -1,0 +1,1 @@
+export { theme, gradients, spacing } from './theme';

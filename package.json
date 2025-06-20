@@ -4,7 +4,24 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "commit": "cz"
+    "commit": "cz",
+    "dev": "bun nx run-many --target=serve --projects=web,api",
+    "dev:web": "bun nx serve web",
+    "dev:api": "bun nx serve api",
+    "build": "bun nx run-many --target=build --projects=web,api",
+    "build:web": "bun nx build web",
+    "build:api": "bun nx build api",
+    "test": "bun nx run-many --target=test --all",
+    "test:web": "bun nx test web",
+    "test:api": "bun nx test api",
+    "lint": "bun nx run-many --target=lint --all",
+    "lint:web": "bun nx lint web",
+    "lint:api": "bun nx lint api",
+    "typecheck": "bun nx run-many --target=typecheck --projects=web,api",
+    "typecheck:web": "bun nx typecheck web",
+    "typecheck:api": "bun nx typecheck api",
+    "start": "bun dev",
+    "preview:web": "bun nx preview web"
   },
   "config": {
     "commitizen": {
@@ -66,6 +83,7 @@
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "21.2.0",
     "prettier": "^2.6.2",
+    "sass": "^1.89.2",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",

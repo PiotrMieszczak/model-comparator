@@ -1,0 +1,83 @@
+// Design System Spacing Tokens
+// Based on design-system-spec.md
+
+// Base spacing unit
+$spacing-base: 4px;
+
+// Spacing Scale
+$spacing-xs: 4px;   // xs
+$spacing-sm: 8px;   // sm  
+$spacing-md: 16px;  // md
+$spacing-lg: 24px;  // lg
+$spacing-xl: 32px;  // xl
+$spacing-2xl: 48px; // 2xl
+$spacing-3xl: 64px; // 3xl
+
+// Spacing Map for easier iteration
+$spacing-scale: (
+  xs: $spacing-xs,
+  sm: $spacing-sm,
+  md: $spacing-md,
+  lg: $spacing-lg,
+  xl: $spacing-xl,
+  2xl: $spacing-2xl,
+  3xl: $spacing-3xl,
+);
+
+// Numbered spacing (for compatibility with design tools)
+$spacing-1: $spacing-xs;   // 4px
+$spacing-2: $spacing-sm;   // 8px
+$spacing-3: 12px;          // 12px
+$spacing-4: $spacing-md;   // 16px
+$spacing-5: 20px;          // 20px
+$spacing-6: $spacing-lg;   // 24px
+$spacing-7: 28px;          // 28px
+$spacing-8: $spacing-xl;   // 32px
+$spacing-10: 40px;         // 40px
+$spacing-12: $spacing-2xl; // 48px
+$spacing-16: $spacing-3xl; // 64px
+$spacing-20: 80px;         // 80px
+$spacing-24: 96px;         // 96px
+
+// Component-specific spacing
+$form-field-gap: $spacing-md;      // 16px - gap between form fields
+$form-section-gap: $spacing-lg;    // 24px - gap between form sections  
+$card-padding: $spacing-xl;        // 32px - default card padding
+$button-padding-x: $spacing-lg;    // 24px - button horizontal padding
+$button-padding-y: 12px;           // 12px - button vertical padding
+
+// Layout spacing
+$layout-padding-mobile: $spacing-md;   // 16px
+$layout-padding-tablet: $spacing-lg;   // 24px  
+$layout-padding-desktop: $spacing-2xl; // 48px
+$container-padding: $spacing-xl;       // 32px
+$section-gap: $spacing-2xl;            // 48px
+
+// Border radius
+$radius-sm: 8px;
+$radius-md: 12px;  // Default border radius from design system
+$radius-lg: 16px;  // Card border radius
+$radius-xl: 20px;
+$radius-2xl: 24px;
+$radius-3xl: 32px;
+$radius-full: 9999px; // Fully rounded
+
+// Default border radius
+$border-radius: $radius-md; // 12px
+
+// Shadow tokens
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+$shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15); // Card shadow from design system
+$shadow-3xl: 0 35px 60px rgba(0, 0, 0, 0.2);
+
+// Z-index scale
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;

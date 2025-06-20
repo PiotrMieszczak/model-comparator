@@ -55,7 +55,7 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
       <Box
         sx={{
           flex: 1,
-          background: 'linear-gradient(135deg, #1565c0 0%, #1976d2 100%)',
+          background: 'linear-gradient(135deg, #006FEE 0%, #004493 100%)',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -63,6 +63,7 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
           color: 'white',
           position: 'relative',
           overflow: 'hidden',
+          padding: { xs: 4, md: 6 }, // 32px mobile, 48px desktop
         }}
       >
         {/* Background decorative circles */}
@@ -125,10 +126,25 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
               <Chat sx={{ color: 'white', fontSize: 28 }} />
             </Avatar>
             <Box>
-              <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', mb: 0.5 }}>
+              <Typography 
+                variant="h4" 
+                component="h1" 
+                sx={{ 
+                  fontWeight: 700,
+                  mb: 0.5,
+                  fontSize: { xs: '20px', md: '24px' }
+                }}
+              >
                 AICompare
               </Typography>
-              <Typography variant="body2" sx={{ opacity: 0.9 }}>
+              <Typography 
+                variant="body2" 
+                sx={{ 
+                  opacity: 0.9,
+                  fontSize: '14px',
+                  fontWeight: 400
+                }}
+              >
                 Intelligent Model Comparison
               </Typography>
             </Box>
@@ -139,10 +155,11 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
             variant="h2"
             component="h1"
             sx={{
-              fontWeight: 'bold',
+              fontWeight: 700,
               mb: 3,
-              fontSize: { xs: '2.5rem', md: '3.5rem' },
-              lineHeight: 1.2,
+              fontSize: { xs: '28px', md: '36px' },
+              lineHeight: { xs: '32px', md: '45px' },
+              letterSpacing: '-0.025em',
             }}
           >
             Compare AI Models
@@ -152,19 +169,18 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
 
           {/* Description */}
           <Typography
-            variant="h6"
+            variant="subtitle1"
             sx={{
               mb: 4,
               opacity: 0.9,
-              lineHeight: 1.6,
+              fontSize: { xs: '18px', md: '20px' },
+              lineHeight: { xs: '28px', md: '32px' },
               fontWeight: 400,
+              maxWidth: '500px',
+              mx: 'auto',
             }}
           >
-            Test multiple AI models simultaneously and
-            <br />
-            analyze their responses, token usage, and
-            <br />
-            costs in real-time.
+            Test multiple AI models simultaneously and analyze their responses, token usage, and costs in real-time.
           </Typography>
 
           {/* Feature Icons */}
@@ -188,37 +204,56 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          bgcolor: '#f8f9fa',
+          bgcolor: 'grey.50',
+          padding: { xs: 2, md: 4 },
         }}
       >
         <Container maxWidth="sm">
           <Card
             sx={{
-              maxWidth: 400,
+              maxWidth: 448, // Design system spec
               mx: 'auto',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-              borderRadius: 2,
+              padding: 0, // Remove default card padding
             }}
           >
-            <CardContent sx={{ p: 4 }}>
+            <CardContent sx={{ padding: { xs: 3, md: 4 } }}>
               {/* Form Header */}
               <Typography
-                variant="h4"
+                variant="h1"
                 component="h1"
-                sx={{ fontWeight: 'bold', mb: 1, textAlign: 'center' }}
+                sx={{ 
+                  fontWeight: 700, 
+                  mb: 1, 
+                  textAlign: 'center',
+                  fontSize: '30px',
+                  lineHeight: '36px'
+                }}
               >
                 Welcome back
               </Typography>
               <Typography
                 variant="body1"
                 color="text.secondary"
-                sx={{ mb: 3, textAlign: 'center' }}
+                sx={{ 
+                  mb: 3, 
+                  textAlign: 'center',
+                  fontSize: '16px',
+                  lineHeight: '24px'
+                }}
               >
                 Sign in to your account to continue
               </Typography>
 
               {/* Email Field */}
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+              <Typography 
+                variant="subtitle2" 
+                color="text.primary" 
+                sx={{ 
+                  mb: 1,
+                  fontWeight: 500,
+                  fontSize: '14px'
+                }}
+              >
                 Email address
               </Typography>
               <TextField
@@ -227,16 +262,19 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
                 variant="outlined"
                 value={email}
                 onChange={onEmailChange}
-                sx={{ 
-                  mb: 2,
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 1,
-                  },
-                }}
+                sx={{ mb: 2 }}
               />
 
               {/* Password Field */}
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+              <Typography 
+                variant="subtitle2" 
+                color="text.primary" 
+                sx={{ 
+                  mb: 1,
+                  fontWeight: 500,
+                  fontSize: '14px'
+                }}
+              >
                 Password
               </Typography>
               <TextField
@@ -246,12 +284,7 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
                 variant="outlined"
                 value={password}
                 onChange={onPasswordChange}
-                sx={{ 
-                  mb: 1,
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 1,
-                  },
-                }}
+                sx={{ mb: 1 }}
                 slotProps={{
                   input: {
                     endAdornment: (
@@ -294,14 +327,7 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
                 variant="contained"
                 size="large"
                 onClick={onSignIn}
-                sx={{
-                  mb: 2,
-                  py: 1.5,
-                  borderRadius: 1,
-                  textTransform: 'none',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                }}
+                sx={{ mb: 2 }}
               >
                 Sign in
               </Button>
@@ -328,15 +354,11 @@ export const LoginPresenter: React.FC<LoginPresenterProps> = ({
                 onClick={onGoogleSignIn}
                 sx={{
                   mb: 3,
-                  py: 1.5,
-                  borderRadius: 1,
-                  textTransform: 'none',
-                  fontSize: '1rem',
-                  borderColor: '#dadce0',
-                  color: '#3c4043',
+                  borderColor: 'grey.300',
+                  color: 'grey.700',
                   '&:hover': {
-                    backgroundColor: '#f8f9fa',
-                    borderColor: '#dadce0',
+                    backgroundColor: 'grey.50',
+                    borderColor: 'grey.300',
                   },
                 }}
               >

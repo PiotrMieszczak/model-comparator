@@ -1,0 +1,292 @@
+// Spacing and Layout Mixins
+// Based on design-system-spec.md
+
+@use '../tokens/spacing' as *;
+@use 'sass:map';
+
+// Spacing Utility Mixins
+@mixin margin($size) {
+  margin: map.get($spacing-scale, $size);
+}
+
+@mixin margin-x($size) {
+  margin-left: map.get($spacing-scale, $size);
+  margin-right: map.get($spacing-scale, $size);
+}
+
+@mixin margin-y($size) {
+  margin-top: map.get($spacing-scale, $size);
+  margin-bottom: map.get($spacing-scale, $size);
+}
+
+@mixin margin-top($size) {
+  margin-top: map.get($spacing-scale, $size);
+}
+
+@mixin margin-bottom($size) {
+  margin-bottom: map.get($spacing-scale, $size);
+}
+
+@mixin margin-left($size) {
+  margin-left: map.get($spacing-scale, $size);
+}
+
+@mixin margin-right($size) {
+  margin-right: map.get($spacing-scale, $size);
+}
+
+@mixin padding($size) {
+  padding: map.get($spacing-scale, $size);
+}
+
+@mixin padding-x($size) {
+  padding-left: map.get($spacing-scale, $size);
+  padding-right: map.get($spacing-scale, $size);
+}
+
+@mixin padding-y($size) {
+  padding-top: map.get($spacing-scale, $size);
+  padding-bottom: map.get($spacing-scale, $size);
+}
+
+@mixin padding-top($size) {
+  padding-top: map.get($spacing-scale, $size);
+}
+
+@mixin padding-bottom($size) {
+  padding-bottom: map.get($spacing-scale, $size);
+}
+
+@mixin padding-left($size) {
+  padding-left: map.get($spacing-scale, $size);
+}
+
+@mixin padding-right($size) {
+  padding-right: map.get($spacing-scale, $size);
+}
+
+// Gap Mixins (for flexbox/grid)
+@mixin gap($size) {
+  gap: map.get($spacing-scale, $size);
+}
+
+@mixin row-gap($size) {
+  row-gap: map.get($spacing-scale, $size);
+}
+
+@mixin column-gap($size) {
+  column-gap: map.get($spacing-scale, $size);
+}
+
+// Layout Container Mixins
+@mixin container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $layout-padding-mobile;
+  
+  @media (min-width: 768px) {
+    padding: 0 $layout-padding-tablet;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 0 $layout-padding-desktop;
+  }
+}
+
+@mixin container-narrow {
+  @include container;
+  max-width: 768px;
+}
+
+@mixin container-wide {
+  @include container;
+  max-width: 1200px;
+}
+
+@mixin container-full {
+  @include container;
+  max-width: none;
+}
+
+// Flexbox Layout Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Grid Layout Mixins
+@mixin grid($columns: 12) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin grid-gap($size) {
+  @include gap($size);
+}
+
+@mixin grid-auto-fit($min-width: 250px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+}
+
+@mixin grid-auto-fill($min-width: 250px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+}
+
+// Responsive Layout Mixins
+@mixin responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-lg;
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-xl;
+  }
+}
+
+@mixin responsive-split {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: $spacing-lg;
+  }
+}
+
+// Section Layout Mixins
+@mixin section {
+  @include padding-y(2xl);
+}
+
+@mixin section-narrow {
+  @include padding-y(xl);
+}
+
+@mixin section-wide {
+  @include padding-y(3xl);
+}
+
+// Card Layout Mixins (for login page spec)
+@mixin login-layout {
+  display: flex;
+  min-height: 100vh;
+  
+  .brand-section {
+    flex: 1;
+    background: $gradient-primary;
+    padding: $spacing-2xl;
+    display: none;
+    
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  .form-section {
+    flex: 1;
+    background: $color-background;
+    padding: $spacing-xl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @media (min-width: 768px) {
+      padding: $spacing-2xl;
+    }
+  }
+}
+
+@mixin form-card-layout {
+  @include form-container;
+  
+  .form-header {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+  
+  .form-field {
+    @include form-field;
+  }
+  
+  .form-actions {
+    margin-top: $spacing-lg;
+  }
+}
+
+// Position Utilities
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// Stack Layout (for vertical spacing)
+@mixin stack($gap: md) {
+  > * + * {
+    margin-top: map.get($spacing-scale, $gap);
+  }
+}
+
+@mixin stack-large {
+  @include stack(lg);
+}
+
+@mixin stack-small {
+  @include stack(sm);
+}
