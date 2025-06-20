@@ -1,2 +1,2 @@
 /* Import the design system SCSS library */
-@import './styles/index.scss';
+@import '../../../libs/design-system/src/styles/index.scss';
