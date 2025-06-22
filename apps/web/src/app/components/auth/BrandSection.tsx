@@ -97,52 +97,19 @@ export const BrandSection: React.FC<BrandSectionProps> = ({
             {icon || <Chat sx={{ color: 'white', fontSize: 28 }} />}
           </Avatar>
           <Box>
-            <Typography 
-              variant="h4" 
-              component="h1" 
-              sx={{ 
-                fontWeight: 700,
-                mb: 0.5,
-                fontSize: { xs: '20px', md: '24px' }
-              }}
-            >
-              AICompare
+            <Typography variant="h5" component="div" sx={{ fontWeight: 700, mb: 0.5 }}>
+              {title}
             </Typography>
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                opacity: 0.9,
-                fontSize: '14px',
-                fontWeight: 400
-              }}
-            >
-              Intelligent Model Comparison
+            <Typography variant="body2" sx={{ opacity: 0.9 }}>
+              {subtitle}
             </Typography>
           </Box>
         </Box>
 
-        {/* Main Content */}
-        {icon && (
-          <Box sx={{ mb: 4 }}>
-            <Avatar
-              sx={{
-                bgcolor: 'rgba(255, 255, 255, 0.2)',
-                width: 80,
-                height: 80,
-                mx: 'auto',
-              }}
-            >
-              {React.cloneElement(icon as React.ReactElement, { 
-                sx: { color: 'white', fontSize: 40 } 
-              })}
-            </Avatar>
-          </Box>
-        )}
-
-        {/* Main Headline */}
+        {/* Headline */}
         <Typography
           variant="h2"
-          component="h1"
+          component="h2"
           sx={{
             fontWeight: 700,
             mb: 3,
@@ -151,53 +118,33 @@ export const BrandSection: React.FC<BrandSectionProps> = ({
             letterSpacing: '-0.025em',
           }}
         >
-          {title}
-          <br />
-          {subtitle}
-        </Typography>
-
-        {/* Description */}
-        <Typography
-          variant="subtitle1"
-          sx={{
-            mb: 4,
-            opacity: 0.9,
-            fontSize: { xs: '16px', md: '18px' },
-            lineHeight: { xs: '24px', md: '28px' },
-            fontWeight: 400,
-            maxWidth: '400px',
-            mx: 'auto',
-          }}
-        >
           {description}
         </Typography>
 
         {/* Features */}
-        {features.length > 0 && (
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
             gap: 4,
-            flexDirection: features.length > 2 ? 'column' : 'row'
-          }}>
-            {features.map((feature, index) => (
-              <Box 
-                key={index}
-                sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: features.length > 2 ? 2 : 1,
-                  justifyContent: features.length > 2 ? 'center' : 'flex-start'
-                }}
-              >
-                {React.cloneElement(feature.icon as React.ReactElement, { 
-                  sx: { fontSize: 20 } 
-                })}
-                <Typography variant="body2">{feature.text}</Typography>
-              </Box>
-            ))}
-          </Box>
-        )}
+            flexDirection: { xs: 'column', md: 'row' },
+          }}
+        >
+          {features.map((feature, index) => (
+            <Box
+              key={index}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                justifyContent: { xs: 'center', md: 'flex-start' },
+              }}
+            >
+              {feature.icon}
+              <Typography variant="body2">{feature.text}</Typography>
+            </Box>
+          ))}
+        </Box>
       </Container>
     </Box>
   );

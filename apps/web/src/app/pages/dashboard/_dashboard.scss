@@ -1,5 +1,5 @@
 // Dashboard Components
-@use '../tokens' as *;
+@use '../../../../../../libs/design-system/src/styles/tokens' as *;
 
 // Dashboard Layout
 .dashboard {
@@ -397,22 +397,7 @@
     }
   }
 
-  &__chip {
-    max-width: 160px;
-    height: 24px;
-    font-size: 11px;
 
-    .label {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      padding: 0 $spacing-1;
-    }
-
-    .delete-icon {
-      font-size: 14px;
-    }
-  }
 }
 
 // Parameters Panel
@@ -420,192 +405,20 @@
   height: 100%;
 
   &__content {
-    padding: $spacing-3;
+    padding: $spacing-2;
   }
 
   &__title {
-    margin-bottom: $spacing-3;
-    font-size: 16px;
+    margin-bottom: $spacing-2;
     font-weight: 600;
   }
 
-  &__controls {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-3;
-  }
-}
-
-// Parameter Slider
-.parameter-slider {
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: $spacing-1;
+  .parameter-row {
+    margin-bottom: $spacing-2;
 
     .label {
-      font-weight: 500;
-    }
-
-    .value {
-      color: $color-primary;
-      font-weight: 600;
-      min-width: 60px;
-      text-align: right;
-    }
-  }
-
-  &__slider {
-    color: $color-primary;
-
-    .thumb {
-      width: 16px;
-      height: 16px;
-    }
-
-    .track {
-      height: 3px;
-    }
-
-    .rail {
-      height: 3px;
-      opacity: 0.3;
-    }
-  }
-}
-
-// Cost Estimator
-.cost-estimator {
-  display: flex;
-  align-items: center;
-  gap: $spacing-1;
-  padding: $spacing-2;
-  background-color: $color-primary-50;
-  border-radius: $border-radius-md;
-  border: 1px solid $color-primary-200;
-
-  &__icon {
-    color: $color-primary;
-    font-size: 20px;
-  }
-
-  &__content {
-    .cost {
-      font-weight: 600;
-      color: $color-primary;
+      margin-bottom: $spacing-1;
       font-size: 14px;
     }
-
-    .unit {
-      color: $color-text-secondary;
-      font-size: 12px;
-    }
-  }
-}
-
-// Comparison Results Section
-.comparison-results {
-  &__title {
-    margin-bottom: $spacing-3;
-    font-weight: 600;
-  }
-
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: $spacing-3;
-  }
-}
-
-// Comparison Card
-.comparison-card {
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid $color-grey-300;
-  border-radius: $border-radius-lg;
-  background-color: white;
-
-  &__header {
-    padding: $spacing-2;
-    padding-bottom: $spacing-1;
-    flex: 0 0 auto;
-
-    .top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: $spacing-2;
-
-      .name-status {
-        display: flex;
-        align-items: center;
-        gap: $spacing-1;
-
-        .name {
-          font-size: 16px;
-          font-weight: 600;
-        }
-      }
-    }
-  }
-
-  &__content {
-    padding: 0 $spacing-2 $spacing-2;
-    flex: 1;
-    overflow: hidden;
-
-    .response-area {
-      height: 100%;
-      overflow: auto;
-      background-color: $color-grey-50;
-      border-radius: $border-radius-md;
-      padding: $spacing-2;
-
-      .loading {
-        display: flex;
-        align-items: center;
-        gap: $spacing-2;
-
-        .text {
-          font-size: 14px;
-          color: $color-text-secondary;
-        }
-      }
-
-      .response-text {
-        white-space: pre-wrap;
-        line-height: 1.5;
-        font-size: 14px;
-      }
-
-      .placeholder {
-        font-size: 14px;
-        color: $color-text-secondary;
-        font-style: italic;
-      }
-    }
-  }
-}
-
-// Status indicators
-.status-indicator {
-  font-size: 12px;
-
-  &--ready {
-    color: $color-success;
-  }
-
-  &--loading {
-    color: $color-primary;
-  }
-
-  &--completed {
-    color: $color-success;
-  }
-
-  &--error {
-    color: $color-error;
   }
 }
