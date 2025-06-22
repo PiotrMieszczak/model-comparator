@@ -6,7 +6,6 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import { join, resolve } from 'path';
 
 export default defineConfig(() => ({
-  root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/web',
   server: {
     port: 4200,
@@ -17,14 +16,10 @@ export default defineConfig(() => ({
     host: 'localhost',
   },
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
-  resolve: {
-    alias: {
-      '@model-comparator/design-system': resolve(__dirname, '../../libs/design-system/src')
-    },
-  },
   css: {
     preprocessorOptions: {
       scss: {
+        additionalData: '',
         includePaths: [resolve(__dirname, '../../libs')]
       }
     }

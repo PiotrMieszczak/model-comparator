@@ -16,7 +16,6 @@ import {
   ComparisonCard,
   CostEstimator,
 } from '../../../components/dashboard';
-import '../_dashboard.scss';
 
 // Define the shape of the model data
 interface Model {

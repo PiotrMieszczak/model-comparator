@@ -1,5 +1,4 @@
 import React from 'react';
-import '../_auth.scss';
 import {
   Box,
   Container,
