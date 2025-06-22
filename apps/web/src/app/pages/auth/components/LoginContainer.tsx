@@ -1,6 +1,6 @@
 import React from 'react';
-import { LoginPresenter, LoginPresenterProps } from '../components/LoginPresenter';
-import { useLogin } from '../hooks/useLogin';
+import { LoginPresenter, LoginPresenterProps } from '../../../../../app/pages/auth/components/LoginPresenter';
+import { useLogin } from '../../../../../app/hooks/auth/useLogin';
 
 export const LoginContainer: React.FC = () => {
   const {

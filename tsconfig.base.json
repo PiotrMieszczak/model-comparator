@@ -16,8 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@model-comparator/design-system": ["libs/design-system/src/index.ts"],
-      "@model-comparator/domains/auth": ["libs/domains/auth/src/index.ts"],
-      "@model-comparator/features/auth": ["libs/features/src/index.ts"]
+      "@model-comparator/shared": ["libs/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
