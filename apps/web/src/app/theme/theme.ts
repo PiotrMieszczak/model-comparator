@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import { designTokens } from '@model-comparator/design-system';
 
 // Extend the default theme to include custom color variants
 declare module '@mui/material/styles' {
@@ -11,73 +12,17 @@ declare module '@mui/material/styles' {
   }
 }
 
-// Custom spacing scale based on design system
-const spacingScale = {
-  xs: 4,   // 4px
-  sm: 8,   // 8px
-  md: 16,  // 16px
-  lg: 24,  // 24px
-  xl: 32,  // 32px
-  '2xl': 48, // 48px
-  '3xl': 64, // 64px
-};
-
 export const theme = createTheme({
-  // Color Palette matching design system
+  // Color Palette from design system tokens
   palette: {
-    // Primary Colors (Blue Theme - Login)
-    primary: {
-      50: '#e6f1ff',
-      100: '#cce3fd',
-      200: '#99c7fb',
-      300: '#66abf9',
-      400: '#338ff7',
-      500: '#006FEE', // Main blue
-      600: '#005bc4', // Darker blue
-      700: '#004493', // Darkest blue
-      800: '#002d62',
-      900: '#001631',
-      main: '#006FEE',
-      light: '#cce3fd',
-      dark: '#004493',
-      contrastText: '#ffffff',
-    },
+    // Primary Colors from design tokens
+    primary: designTokens.colors.primary,
 
-    // Success Colors (Green Theme - Signup)
-    success: {
-      50: '#f0fdf4',
-      100: '#d1ead1',
-      200: '#a3d5a3',
-      300: '#75c075',
-      400: '#47ab47',
-      500: '#17c964', // Main green
-      600: '#12a150', // Darker green
-      700: '#0e793c', // Darkest green
-      800: '#0a5128',
-      900: '#062914',
-      main: '#17c964',
-      light: '#d1ead1',
-      dark: '#0e793c',
-      contrastText: '#ffffff',
-    },
+    // Success Colors from design tokens
+    success: designTokens.colors.success,
 
-    // Warning Colors (Orange Theme - Password Recovery)
-    warning: {
-      50: '#fffbeb',
-      100: '#fef9c3',
-      200: '#fef08a',
-      300: '#fde047',
-      400: '#facc15',
-      500: '#f5a524', // Main orange
-      600: '#d97706', // Darker orange
-      700: '#a16207', // Darkest orange
-      800: '#713f12',
-      900: '#422006',
-      main: '#f5a524',
-      light: '#fef9c3',
-      dark: '#a16207',
-      contrastText: '#ffffff',
-    },
+    // Warning Colors from design tokens
+    warning: designTokens.colors.warning,
 
     // Custom accent color for special elements
     accent: {
@@ -87,215 +32,147 @@ export const theme = createTheme({
       contrastText: '#ffffff',
     },
 
-    // Neutral Colors (Custom Gray Scale)
-    grey: {
-      50: '#f8f9fa',
-      100: '#e9ecef',
-      200: '#dee2e6',
-      300: '#ced4da',
-      400: '#adb5bd',
-      500: '#6c757d',
-      600: '#495057',
-      700: '#343a40',
-      800: '#212529',
-      900: '#121416',
-    },
+    // Neutral Colors from design tokens
+    grey: designTokens.colors.grey,
 
-    // Background colors
-    background: {
-      default: '#f8f9fa', // gray-50
-      paper: '#ffffff',
-    },
+    // Background colors from design tokens
+    background: designTokens.colors.background,
 
-    // Text colors
-    text: {
-      primary: '#343a40', // gray-700
-      secondary: '#6c757d', // gray-500
-      disabled: '#adb5bd', // gray-400
-    },
+    // Text colors from design tokens
+    text: designTokens.colors.text,
 
-    // Divider color
-    divider: '#dee2e6', // gray-200
+    // Divider color from design tokens
+    divider: designTokens.colors.divider,
   },
 
-  // Typography matching design system
+  // Typography from design system tokens
   typography: {
-    fontFamily: [
-      'Inter',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-    ].join(','),
+    fontFamily: designTokens.typography.fontFamily.primary,
     
-    // Headings
+    // Headings from design tokens
     h1: {
-      fontFamily: 'Inter',
-      fontSize: '30px',
-      lineHeight: '36px',
-      fontWeight: 700,
-      letterSpacing: '-0.025em',
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.h1,
     },
     h2: {
-      fontFamily: 'Inter',
-      fontSize: '36px',
-      lineHeight: '45px',
-      fontWeight: 700,
-      letterSpacing: '-0.025em',
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.h2,
     },
     h3: {
-      fontFamily: 'Inter',
-      fontSize: '24px',
-      lineHeight: '32px',
-      fontWeight: 600,
-      letterSpacing: '-0.025em',
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.h3,
     },
     h4: {
-      fontFamily: 'Inter',
-      fontSize: '20px',
-      lineHeight: '28px',
-      fontWeight: 600,
-      letterSpacing: '-0.025em',
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.h4,
     },
     h5: {
-      fontFamily: 'Inter',
-      fontSize: '18px',
-      lineHeight: '24px',
-      fontWeight: 600,
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.h5,
     },
     h6: {
-      fontFamily: 'Inter',
-      fontSize: '16px',
-      lineHeight: '20px',
-      fontWeight: 600,
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.h6,
     },
 
-    // Body Text
+    // Body Text from design tokens
     body1: {
-      fontFamily: 'Inter',
-      fontSize: '16px',
-      lineHeight: '24px',
-      fontWeight: 400,
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.body1,
     },
     body2: {
-      fontFamily: 'Inter',
-      fontSize: '14px',
-      lineHeight: '20px',
-      fontWeight: 400,
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.body2,
     },
     
-    // Additional text variants
+    // Additional text variants from design tokens
     subtitle1: {
-      fontFamily: 'Inter',
-      fontSize: '20px',
-      lineHeight: '32px',
-      fontWeight: 400,
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.subtitle1,
     },
     subtitle2: {
-      fontFamily: 'Inter',
-      fontSize: '14px',
-      lineHeight: '20px',
-      fontWeight: 500,
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.subtitle2,
     },
     caption: {
-      fontFamily: 'Inter',
-      fontSize: '12px',
-      lineHeight: '16px',
-      fontWeight: 400,
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.caption,
     },
     overline: {
-      fontFamily: 'Inter',
-      fontSize: '12px',
-      lineHeight: '16px',
-      fontWeight: 500,
-      textTransform: 'uppercase',
-      letterSpacing: '0.1em',
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.overline,
     },
 
-    // Button text
+    // Button text from design tokens
     button: {
-      fontFamily: 'Inter',
-      fontSize: '16px',
-      fontWeight: 600,
-      textTransform: 'none',
-      letterSpacing: '0.025em',
+      fontFamily: designTokens.typography.fontFamily.primary,
+      ...designTokens.typography.button,
     },
   },
 
-  // Spacing system (base unit: 4px)
-  spacing: 4,
+  // Spacing system from design tokens
+  spacing: designTokens.spacing.base,
 
-  // Shape (border radius)
+  // Shape from design tokens
   shape: {
-    borderRadius: 12, // 12px default border radius
+    borderRadius: designTokens.borderRadius.default,
   },
 
-  // Breakpoints (if needed for custom responsive behavior)
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-    },
-  },
+  // Breakpoints from design tokens
+  breakpoints: designTokens.breakpoints,
 
-  // Shadow system
+  // Shadow system from design tokens
   shadows: [
     'none',
-    '0 1px 3px rgba(0, 0, 0, 0.1)',
-    '0 4px 6px rgba(0, 0, 0, 0.1)',
-    '0 10px 15px rgba(0, 0, 0, 0.1)',
-    '0 20px 25px rgba(0, 0, 0, 0.1)',
-    '0 25px 50px rgba(0, 0, 0, 0.15)', // Card shadow
-    '0 35px 60px rgba(0, 0, 0, 0.2)',
-    '0 40px 70px rgba(0, 0, 0, 0.25)',
-    ...Array(16).fill('0 40px 70px rgba(0, 0, 0, 0.25)'), // Fill remaining slots
+    designTokens.shadows.sm,
+    designTokens.shadows.md,
+    designTokens.shadows.lg,
+    designTokens.shadows.xl,
+    designTokens.shadows['2xl'],
+    designTokens.shadows['3xl'],
+    designTokens.shadows['3xl'],
+    ...Array(16).fill(designTokens.shadows['3xl']), // Fill remaining slots
   ] as const,
 
   // Component style overrides
   components: {
-    // Button overrides
+    // Button overrides using design tokens
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
-          textTransform: 'none',
-          fontWeight: 600,
-          fontSize: '16px',
-          padding: '12px 24px',
+          borderRadius: designTokens.borderRadius.default,
+          textTransform: designTokens.typography.button.textTransform,
+          fontWeight: designTokens.typography.button.fontWeight,
+          fontSize: designTokens.typography.button.fontSize,
+          padding: `${designTokens.spacing.buttonPaddingY}px ${designTokens.spacing.buttonPaddingX}px`,
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            boxShadow: designTokens.shadows.md,
           },
         },
         sizeLarge: {
           height: 44,
-          padding: '12px 24px',
+          padding: `${designTokens.spacing.buttonPaddingY}px ${designTokens.spacing.buttonPaddingX}px`,
         },
         sizeMedium: {
           height: 36,
-          padding: '8px 20px',
+          padding: `${designTokens.spacing.sm}px ${designTokens.spacing.lg - 4}px`,
         },
         sizeSmall: {
           height: 32,
-          padding: '6px 16px',
-          fontSize: '14px',
+          padding: `${designTokens.spacing.xs + 2}px ${designTokens.spacing.md}px`,
+          fontSize: designTokens.typography.body2.fontSize,
         },
         containedPrimary: {
-          background: 'linear-gradient(135deg, #006FEE 0%, #005bc4 100%)',
+          background: designTokens.gradients.primary,
           '&:hover': {
-            background: 'linear-gradient(135deg, #005bc4 0%, #004493 100%)',
+            background: designTokens.gradients.primaryHover,
           },
         },
         containedSuccess: {
-          background: 'linear-gradient(135deg, #17c964 0%, #12a150 100%)',
+          background: designTokens.gradients.success,
           '&:hover': {
-            background: 'linear-gradient(135deg, #12a150 0%, #0e793c 100%)',
+            background: designTokens.gradients.successHover,
           },
         },
         outlined: {
@@ -307,29 +184,29 @@ export const theme = createTheme({
       },
     },
 
-    // TextField overrides
+    // TextField overrides using design tokens
     MuiTextField: {
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 12,
+            borderRadius: designTokens.borderRadius.default,
             height: 56,
-            fontSize: '16px',
+            fontSize: designTokens.typography.body1.fontSize,
             '& fieldset': {
               borderWidth: '2px',
-              borderColor: '#ced4da', // gray-300
+              borderColor: designTokens.colors.grey[300],
             },
             '&:hover fieldset': {
-              borderColor: '#adb5bd', // gray-400
+              borderColor: designTokens.colors.grey[400],
             },
             '&.Mui-focused fieldset': {
-              borderColor: '#006FEE', // primary-500
+              borderColor: designTokens.colors.primary.main,
               borderWidth: '2px',
             },
             '& input': {
-              padding: '16px',
+              padding: `${designTokens.spacing.md}px`,
               '&::placeholder': {
-                color: '#adb5bd', // gray-400
+                color: designTokens.colors.grey[400],
                 opacity: 1,
               },
             },
@@ -338,77 +215,77 @@ export const theme = createTheme({
       },
     },
 
-    // Input Label overrides
+    // Input Label overrides using design tokens
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          fontSize: '14px',
-          fontWeight: 500,
-          color: '#343a40', // gray-700
+          fontSize: designTokens.typography.body2.fontSize,
+          fontWeight: designTokens.typography.fontWeight.medium,
+          color: designTokens.colors.text.primary,
           transform: 'translate(0, -1.5px) scale(1)',
           '&.Mui-focused': {
-            color: '#006FEE', // primary-500
+            color: designTokens.colors.primary.main,
           },
         },
       },
     },
 
-    // Card overrides
+    // Card overrides using design tokens
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
-          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)',
+          borderRadius: designTokens.borderRadius.lg,
+          boxShadow: designTokens.shadows['2xl'],
           border: 'none',
-          padding: 32,
+          padding: designTokens.spacing.cardPadding,
         },
       },
     },
 
-    // Paper overrides
+    // Paper overrides using design tokens
     MuiPaper: {
       styleOverrides: {
         root: {
           backgroundImage: 'none',
         },
         elevation1: {
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          boxShadow: designTokens.shadows.md,
         },
         elevation2: {
-          boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
+          boxShadow: designTokens.shadows.lg,
         },
         elevation3: {
-          boxShadow: '0 20px 25px rgba(0, 0, 0, 0.1)',
+          boxShadow: designTokens.shadows.xl,
         },
       },
     },
 
-    // Avatar overrides
+    // Avatar overrides using design tokens
     MuiAvatar: {
       styleOverrides: {
         root: {
           fontSize: '1rem',
-          fontWeight: 600,
+          fontWeight: designTokens.typography.fontWeight.semibold,
         },
       },
     },
 
-    // Divider overrides
+    // Divider overrides using design tokens
     MuiDivider: {
       styleOverrides: {
         root: {
-          borderColor: '#dee2e6', // gray-200
+          borderColor: designTokens.colors.divider,
         },
       },
     },
 
-    // Link overrides
+    // Link overrides using design tokens
     MuiLink: {
       styleOverrides: {
         root: {
-          color: '#006FEE', // primary-500
+          color: designTokens.colors.primary.main,
           textDecoration: 'none',
-          fontWeight: 500,
+          fontWeight: designTokens.typography.fontWeight.medium,
           '&:hover': {
             textDecoration: 'underline',
           },
@@ -418,15 +295,6 @@ export const theme = createTheme({
   },
 });
 
-// Helper function to create gradients
-export const gradients = {
-  primary: 'linear-gradient(135deg, #006FEE 0%, #005bc4 100%)',
-  primaryHover: 'linear-gradient(135deg, #005bc4 0%, #004493 100%)',
-  success: 'linear-gradient(135deg, #17c964 0%, #12a150 100%)',
-  successHover: 'linear-gradient(135deg, #12a150 0%, #0e793c 100%)',
-  warning: 'linear-gradient(135deg, #f5a524 0%, #d97706 100%)',
-  warningHover: 'linear-gradient(135deg, #d97706 0%, #a16207 100%)',
-};
-
-// Helper object for custom spacing values
-export const spacing = spacingScale;
+// Export design tokens for direct use
+export const gradients = designTokens.gradients;
+export const spacing = designTokens.spacing;

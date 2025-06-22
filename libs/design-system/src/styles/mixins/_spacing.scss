@@ -94,18 +94,48 @@
 }
 
 @mixin container-narrow {
-  @include container;
+  width: 100%;
+  margin: 0 auto;
   max-width: 768px;
+  padding: 0 $layout-padding-mobile;
+  
+  @media (min-width: 768px) {
+    padding: 0 $layout-padding-tablet;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 0 $layout-padding-desktop;
+  }
 }
 
 @mixin container-wide {
-  @include container;
+  width: 100%;
+  margin: 0 auto;
   max-width: 1200px;
+  padding: 0 $layout-padding-mobile;
+  
+  @media (min-width: 768px) {
+    padding: 0 $layout-padding-tablet;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 0 $layout-padding-desktop;
+  }
 }
 
 @mixin container-full {
-  @include container;
+  width: 100%;
+  margin: 0 auto;
   max-width: none;
+  padding: 0 $layout-padding-mobile;
+  
+  @media (min-width: 768px) {
+    padding: 0 $layout-padding-tablet;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 0 $layout-padding-desktop;
+  }
 }
 
 // Flexbox Layout Mixins
