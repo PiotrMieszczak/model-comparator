@@ -16,8 +16,9 @@ export const ModelAndParametersSection: React.FC<ModelAndParametersSectionProps>
         display: 'grid',
         gridTemplateColumns: '1fr 400px',
         gap: 3,
-        mb: 3,
-        height: '600px',
+        flex: 1,
+        minHeight: 0,
+        overflow: 'hidden',
       }}
     >
       {/* Left Column - Model Selection */}
@@ -25,6 +26,7 @@ export const ModelAndParametersSection: React.FC<ModelAndParametersSectionProps>
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          minHeight: 0,
           overflow: 'hidden',
         }}
       >
@@ -37,6 +39,8 @@ export const ModelAndParametersSection: React.FC<ModelAndParametersSectionProps>
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
+          minHeight: 0,
+          overflow: 'hidden',
         }}
       >
         {modelConfigurationColumn}

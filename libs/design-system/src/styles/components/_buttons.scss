@@ -1,0 +1,79 @@
+// Button Components
+@use '../tokens' as *;
+
+.send-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  // Default (disabled) state
+  background-color: var(--color-grey-300);
+  color: var(--color-grey-500);
+  cursor: not-allowed;
+
+  // Active state
+  &--active {
+    background-color: var(--color-primary-main);
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // Icon sizing
+  .send-icon {
+    font-size: 16px;
+  }
+}
+
+// Action button variants
+.action-button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &--primary {
+    background: var(--gradient-primary);
+    color: white;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: var(--color-primary-main);
+    border: 1px solid var(--color-primary-main);
+
+    &:hover {
+      background-color: var(--color-primary-50);
+    }
+  }
+
+  &--danger {
+    background-color: var(--color-error-main);
+    color: white;
+
+    &:hover {
+      background-color: var(--color-error-dark);
+    }
+  }
+}

@@ -37,11 +37,17 @@ export const ModelChip: React.FC<ModelChipProps> = ({
       variant="filled"
       size="small"
       sx={{
-        maxWidth: '200px',
+        maxWidth: '160px',
+        height: '24px',
+        fontSize: '11px',
         '& .MuiChip-label': {
           overflow: 'hidden',
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
+          px: 1,
+        },
+        '& .MuiChip-deleteIcon': {
+          fontSize: '14px',
         },
       }}
     />

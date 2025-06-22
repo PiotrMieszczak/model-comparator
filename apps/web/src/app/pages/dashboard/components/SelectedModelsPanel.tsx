@@ -11,9 +11,9 @@ export const SelectedModelsPanel: React.FC<SelectedModelsPanelProps> = ({
   costEstimator,
 }) => {
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h6" sx={{ mb: 2, fontSize: '16px', fontWeight: 600 }}>
+    <Card sx={{ height: 'fit-content' }}>
+      <CardContent sx={{ pb: 2 }}>
+        <Typography variant="h6" sx={{ mb: 1.5, fontSize: '14px', fontWeight: 600 }}>
           Selected Models ({selectedModels.length})
         </Typography>
         
@@ -22,15 +22,15 @@ export const SelectedModelsPanel: React.FC<SelectedModelsPanelProps> = ({
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: 1,
-            mb: 2,
-            minHeight: '40px',
+            gap: 0.5,
+            mb: 1.5,
+            minHeight: '32px',
           }}
         >
           {selectedModels.length > 0 ? (
             selectedModels
           ) : (
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="caption" color="text.secondary">
               No models selected
             </Typography>
           )}
