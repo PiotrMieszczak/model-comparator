@@ -3,7 +3,7 @@ import { LoginPresenter, LoginPresenterProps } from './LoginPresenter';
 import { useLogin } from '../../../hooks/auth/useLogin';
 
 
-export const LoginContainer: React.FC = () => {
+export const LoginController: React.FC = () => {
   const {
     email,
     password,

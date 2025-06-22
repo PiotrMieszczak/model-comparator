@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { LoginPage, DashboardPage } from './pages';
+import { LoginPage, ForgotPasswordPage, SignUpPage, DashboardPage } from './pages';
 import { AuthGuard } from './guards';
 
 export function App() {
@@ -8,6 +8,8 @@ export function App() {
     <Routes>
       {/* Public routes */}
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       
       {/* Protected routes */}
       <Route 
@@ -20,10 +22,10 @@ export function App() {
       />
       
       {/* Default redirect */}
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
       
-      {/* Catch all - redirect to dashboard */}
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      {/* Catch all - redirect to login */}
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );
 }

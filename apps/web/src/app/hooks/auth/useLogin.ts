@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export interface LoginState {
   email: string;
@@ -18,6 +19,7 @@ export interface LoginActions {
 }
 
 export const useLogin = (): LoginState & LoginActions => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -49,13 +51,11 @@ export const useLogin = (): LoginState & LoginActions => {
   };
 
   const handleForgotPassword = () => {
-    // TODO: Navigate to forgot password flow
-    console.log('Forgot password');
+    navigate('/forgot-password');
   };
 
   const handleCreateAccount = () => {
-    // TODO: Navigate to registration page
-    console.log('Create account');
+    navigate('/signup');
   };
 
   return {

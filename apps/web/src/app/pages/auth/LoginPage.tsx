@@ -1,6 +1,6 @@
 import React from 'react';
-import { LoginContainer } from './components/LoginContainer';
+import { LoginController } from './components/LoginController';
 
 export const LoginPage: React.FC = () => {
-  return <LoginContainer />;
+  return <LoginController />;
 };
