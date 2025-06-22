@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-import { join } from 'path';
+import { join, resolve } from 'path';
 
 export default defineConfig(() => ({
   root: __dirname,
@@ -17,6 +17,18 @@ export default defineConfig(() => ({
     host: 'localhost',
   },
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  resolve: {
+    alias: {
+      '@model-comparator/design-system': resolve(__dirname, '../../libs/design-system/src')
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        includePaths: [resolve(__dirname, '../../libs')]
+      }
+    }
+  },
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
