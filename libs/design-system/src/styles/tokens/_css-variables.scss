@@ -3,6 +3,9 @@
 
 @use 'colors' as *;
 @use 'spacing' as *;
+@use 'borders' as *;
+@use 'shadows' as *;
+@use 'z-index' as *;
 
 // Mixin to generate CSS variables from color maps
 @mixin generate-color-variables($prefix, $color-map) {

@@ -22,6 +22,13 @@ $warning-500: #f5a524; // Main orange
 $warning-600: #d97706; // Darker orange
 $warning-700: #a16207; // Darkest orange
 
+// Error Colors (Red Theme)
+$error-100: #fde8e8;
+$error-200: #fecaca;
+$error-500: #f44336; // Main red
+$error-600: #d32f2f; // Darker red
+$error-700: #b71c1c; // Darkest red
+
 // Neutral Colors
 $gray-50: #f8f9fa;
 $gray-100: #e9ecef;
@@ -47,6 +54,10 @@ $color-success-dark: $success-700;
 $color-warning: $warning-500;
 $color-warning-light: $warning-100;
 $color-warning-dark: $warning-700;
+
+$color-error: $error-500;
+$color-error-light: $error-100;
+$color-error-dark: $error-700;
 
 $color-background: $gray-50;
 $color-surface: $white;
@@ -81,6 +92,14 @@ $warning-colors: (
   700: $warning-700,
 );
 
+$error-colors: (
+  100: $error-100,
+  200: $error-200,
+  500: $error-500,
+  600: $error-600,
+  700: $error-700,
+);
+
 $gray-colors: (
   50: $gray-50,
   100: $gray-100,
@@ -101,3 +120,5 @@ $gradient-success: linear-gradient(135deg, #{$success-500} 0%, #{$success-600} 1
 $gradient-success-hover: linear-gradient(135deg, #{$success-600} 0%, #{$success-700} 100%);
 $gradient-warning: linear-gradient(135deg, #{$warning-500} 0%, #{$warning-600} 100%);
 $gradient-warning-hover: linear-gradient(135deg, #{$warning-600} 0%, #{$warning-700} 100%);
+$gradient-error: linear-gradient(135deg, #{$error-500} 0%, #{$error-600} 100%);
+$gradient-error-hover: linear-gradient(135deg, #{$error-600} 0%, #{$error-700} 100%);

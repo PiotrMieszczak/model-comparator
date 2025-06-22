@@ -13,13 +13,13 @@
   justify-content: center;
   
   // Default (disabled) state
-  background-color: var(--color-grey-300);
-  color: var(--color-grey-500);
+  background-color: var(--gray-300);
+  color: var(--gray-500);
   cursor: not-allowed;
 
   // Active state
   &--active {
-    background-color: var(--color-primary-main);
+    background-color: var(--color-primary);
     color: white;
     cursor: pointer;
 
@@ -60,16 +60,16 @@
 
   &--secondary {
     background-color: transparent;
-    color: var(--color-primary-main);
-    border: 1px solid var(--color-primary-main);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
 
     &:hover {
-      background-color: var(--color-primary-50);
+      background-color: var(--color-primary-light);
     }
   }
 
   &--danger {
-    background-color: var(--color-error-main);
+    background-color: var(--color-error);
     color: white;
 
     &:hover {

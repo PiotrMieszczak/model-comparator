@@ -1,5 +1,5 @@
 // Authentication Components
-@use '../../../../../../libs/design-system/src/styles/tokens' as *;
+@use '@model-comparator/design-system/styles/tokens' as *;
 
 // Auth Layout - Split screen design
 .auth-layout {
@@ -27,7 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $color-grey-50;
+    background-color: $gray-50;
     padding: $spacing-2;
 
     @media (min-width: 768px) {
@@ -242,9 +242,9 @@
 .social-button {
   width: 100%;
   padding: $spacing-2 $spacing-3;
-  border-radius: $border-radius-md;
-  border: 1px solid $color-grey-300;
-  color: $color-grey-700;
+  border-radius: $radius-md;
+  border: 1px solid $gray-300;
+  color: $gray-700;
   background-color: white;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -255,8 +255,8 @@
   font-weight: 500;
 
   &:hover {
-    background-color: $color-grey-50;
-    border-color: $color-grey-300;
+    background-color: $gray-50;
+    border-color: $gray-300;
   }
 
   &--google:hover {
