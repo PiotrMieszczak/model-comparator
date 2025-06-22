@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardContent, Typography, Checkbox, Chip } from '@mui/material';
+import { Card, CardContent, Typography, Checkbox, Chip } from '@mui/material';
 
 export interface ModelCardProps {
   id: string;
@@ -22,87 +22,62 @@ export const ModelCard: React.FC<ModelCardProps> = ({
   isSelected,
   onSelectionChange,
 }) => {
-  const getProviderColor = (provider: string) => {
+  const getProviderClass = (provider: string) => {
     switch (provider.toLowerCase()) {
       case 'openai':
-        return 'primary';
+        return 'provider--openai';
       case 'anthropic':
-        return 'secondary';
+        return 'provider--anthropic';
       case 'google':
-        return 'success';
+        return 'provider--google';
       case 'meta':
-        return 'info';
+        return 'provider--meta';
       default:
-        return 'default';
+        return '';
     }
   };
 
   return (
     <Card
-      sx={{
-        border: isSelected ? '2px solid' : '1px solid',
-        borderColor: isSelected ? 'primary.main' : 'grey.300',
-        backgroundColor: isSelected ? 'primary.50' : 'white',
-        transition: 'all 0.2s ease-in-out',
-        cursor: 'pointer',
-        '&:hover': {
-          borderColor: 'primary.main',
-          boxShadow: 1,
-        },
-      }}
+      className={`model-card ${isSelected ? 'model-card--selected' : ''}`}
       onClick={() => onSelectionChange(id, !isSelected)}
     >
-      <CardContent sx={{ p: 3 }}>
+      <CardContent className="model-card__content">
         {/* Header with checkbox and provider */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+        <div className="model-card__header">
           <Checkbox
+            className="checkbox"
             checked={isSelected}
             onChange={(e) => onSelectionChange(id, e.target.checked)}
             onClick={(e) => e.stopPropagation()}
-            sx={{ p: 0, mr: 1 }}
           />
           <Chip
             label={provider}
             size="small"
-            color={getProviderColor(provider) as any}
             variant="outlined"
+            className={getProviderClass(provider)}
           />
-        </Box>
+        </div>
 
         {/* Model name */}
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: 600,
-            mb: 1,
-            fontSize: '16px',
-          }}
-        >
+        <Typography variant="h6" className="model-card__name">
           {name}
         </Typography>
 
         {/* Description */}
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{
-            mb: 2,
-            lineHeight: 1.4,
-            minHeight: '40px',
-          }}
-        >
+        <Typography variant="body2" className="model-card__description">
           {description}
         </Typography>
 
         {/* Pricing and limits */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="body2" sx={{ fontWeight: 500 }}>
+        <div className="model-card__footer">
+          <Typography variant="body2" className="cost">
             {costPer1K}
           </Typography>
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" className="tokens">
             {tokenLimit}
           </Typography>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   );

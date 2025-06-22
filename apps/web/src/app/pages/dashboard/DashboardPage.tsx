@@ -94,22 +94,12 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <Box sx={{ height: '100vh', backgroundColor: 'grey.50', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <div className="dashboard">
       {/* Dashboard Header */}
       <DashboardHeader onSettingsClick={mockHandlers.onSettingsClick} />
 
       {/* Main Content */}
-      <Container 
-        maxWidth="xl" 
-        sx={{ 
-          py: 2, 
-          flex: 1, 
-          display: 'flex', 
-          flexDirection: 'column',
-          overflow: 'hidden',
-          minHeight: 0,
-        }}
-      >
+      <Container maxWidth="xl" className="dashboard__content">
         {/* Prompt Configuration */}
         <PromptConfigurationSection
           prompt=""
@@ -212,6 +202,6 @@ export const DashboardPage: React.FC = () => {
           ))}
         />
       </Container>
-    </Box>
+    </div>
   );
 };

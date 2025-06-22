@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '@mui/material';
 
 export interface ModelAndParametersSectionProps {
   modelSelectionColumn: React.ReactNode;
@@ -11,40 +10,16 @@ export const ModelAndParametersSection: React.FC<ModelAndParametersSectionProps>
   modelConfigurationColumn,
 }) => {
   return (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 400px',
-        gap: 3,
-        flex: 1,
-        minHeight: 0,
-        overflow: 'hidden',
-      }}
-    >
+    <div className="model-parameters-section">
       {/* Left Column - Model Selection */}
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: 0,
-          overflow: 'hidden',
-        }}
-      >
+      <div className="model-parameters-section__left-column">
         {modelSelectionColumn}
-      </Box>
+      </div>
 
       {/* Right Column - Configuration */}
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 2,
-          minHeight: 0,
-          overflow: 'hidden',
-        }}
-      >
+      <div className="model-parameters-section__right-column">
         {modelConfigurationColumn}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };

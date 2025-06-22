@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Button, Avatar } from '@mui/material';
+import { Typography, Button, Avatar } from '@mui/material';
 import { Settings, Chat } from '@mui/icons-material';
 
 export interface DashboardHeaderProps {
@@ -10,50 +10,26 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({
   onSettingsClick,
 }) => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        p: 3,
-        borderBottom: '1px solid',
-        borderColor: 'grey.200',
-      }}
-    >
+    <div className="dashboard__header">
       {/* Logo and Title */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Avatar
-          sx={{
-            bgcolor: 'primary.main',
-            width: 40,
-            height: 40,
-          }}
-        >
-          <Chat sx={{ color: 'white', fontSize: 20 }} />
+      <div className="logo">
+        <Avatar className="avatar">
+          <Chat />
         </Avatar>
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: 500,
-            color: 'text.secondary',
-          }}
-        >
+        <Typography variant="h6" className="title">
           Compare AI models side by side
         </Typography>
-      </Box>
+      </div>
 
       {/* Settings Button */}
       <Button
         variant="outlined"
         startIcon={<Settings />}
         onClick={onSettingsClick}
-        sx={{
-          borderColor: 'grey.300',
-          color: 'grey.700',
-        }}
+        className="settings-button"
       >
         Settings
       </Button>
-    </Box>
+    </div>
   );
 };

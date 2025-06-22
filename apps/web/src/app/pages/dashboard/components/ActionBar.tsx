@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Chip } from '@mui/material';
+import { Button, Chip } from '@mui/material';
 import { PlayArrow, SelectAll, ClearAll } from '@mui/icons-material';
 
 export interface ActionBarProps {
@@ -18,25 +18,15 @@ export const ActionBar: React.FC<ActionBarProps> = ({
   isRunDisabled = false,
 }) => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        mb: 2,
-        p: 2,
-        backgroundColor: 'grey.50',
-        borderRadius: 1,
-      }}
-    >
+    <div className="action-bar">
       {/* Left side - Filter actions */}
-      <Box sx={{ display: 'flex', gap: 1 }}>
+      <div className="action-bar__filters">
         <Button
           variant="text"
           startIcon={<SelectAll />}
           onClick={onSelectAll}
           size="small"
-          sx={{ color: 'primary.main' }}
+          className="filter-button"
         >
           Select All
         </Button>
@@ -46,7 +36,7 @@ export const ActionBar: React.FC<ActionBarProps> = ({
           startIcon={<ClearAll />}
           onClick={onClearAll}
           size="small"
-          sx={{ color: 'text.secondary' }}
+          className="filter-button filter-button--secondary"
         >
           Clear All
         </Button>
@@ -56,13 +46,9 @@ export const ActionBar: React.FC<ActionBarProps> = ({
           onClick={onPopularFilter}
           variant="outlined"
           size="small"
-          sx={{
-            borderColor: 'primary.main',
-            color: 'primary.main',
-            cursor: 'pointer',
-          }}
+          className="filter-chip"
         />
-      </Box>
+      </div>
 
       {/* Right side - Run comparison */}
       <Button
@@ -70,13 +56,10 @@ export const ActionBar: React.FC<ActionBarProps> = ({
         startIcon={<PlayArrow />}
         onClick={onRunComparison}
         disabled={isRunDisabled}
-        sx={{
-          px: 3,
-          py: 1,
-        }}
+        className={`action-bar__run-button ${isRunDisabled ? 'action-bar__run-button--disabled' : ''}`}
       >
         Run Comparison
       </Button>
-    </Box>
+    </div>
   );
 };
