@@ -3,6 +3,7 @@ import { Container } from '@mui/material';
 import {
   DashboardHeader,
   PromptConfigurationSection,
+  ConversationSection,
   ModelSelectionColumn,
   ActionBar,
   SelectedModelsPanel,
@@ -14,6 +15,7 @@ import {
   ComparisonCard,
   CostEstimator,
 } from '../../../components/dashboard';
+import type { Message } from '../../../components/dashboard/ConversationSection';
 
 // Define the shape of the model data
 interface Model {
@@ -46,6 +48,7 @@ export interface DashboardPresenterProps {
   models: Model[];
   selectedModels: Model[];
   prompt: string;
+  messages: Message[];
   handlers: Handlers;
 }
 
@@ -53,6 +56,7 @@ export const DashboardPresenter: React.FC<DashboardPresenterProps> = ({
   models,
   selectedModels,
   prompt,
+  messages,
   handlers,
 }) => {
   return (
@@ -64,6 +68,7 @@ export const DashboardPresenter: React.FC<DashboardPresenterProps> = ({
           onPromptChange={handlers.onPromptChange}
           onSend={handlers.onPromptSend}
         />
+        <ConversationSection messages={messages} />
         <ModelSelectionColumn
           selectedCount={selectedModels.length}
           actionBar={

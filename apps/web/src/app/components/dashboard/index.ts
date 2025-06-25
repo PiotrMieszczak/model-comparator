@@ -1,4 +1,5 @@
 export * from './DashboardHeader';
+export * from './ConversationSection';
 export * from './PromptConfigurationSection';
 export * from './ModelAndParametersSection';
 export * from './ModelSelectionColumn';

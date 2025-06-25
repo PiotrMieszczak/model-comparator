@@ -40,10 +40,12 @@ export const PromptConfigurationSection: React.FC<PromptConfigurationSectionProp
             multiline
             variant="outlined"
             fullWidth
+            minRows={1}
+            maxRows={8}
             slotProps={{
               input: {
-                style: {
-                  maxHeight: '250px',
+                sx: {
+                  maxHeight: '200px',
                   overflowY: 'auto'
                 }
               }

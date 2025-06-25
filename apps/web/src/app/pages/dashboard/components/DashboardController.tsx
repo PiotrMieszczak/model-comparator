@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { DashboardPresenter } from './DashboardPresenter';
+import type { Message } from '../../../components/dashboard/ConversationSection';
 
 // In a real app, this data would come from a state management solution or an API call.
 const mockModels = [
@@ -63,6 +64,9 @@ export const DashboardController: React.FC = () => {
   // State management for prompt
   const [prompt, setPrompt] = useState('');
   
+  // State management for conversation
+  const [messages, setMessages] = useState<Message[]>([]);
+  
   // This logic would be replaced by state management hooks (e.g., useState, useReducer)
   const selectedModels = mockModels.filter(model => model.isSelected);
 
@@ -74,9 +78,52 @@ export const DashboardController: React.FC = () => {
       console.log('Prompt changed', event.target.value);
     },
     onPromptSend: () => {
-      console.log('Prompt sent:', prompt);
-      // Optionally clear the prompt after sending
-      // setPrompt('');
+      if (!prompt.trim()) return;
+      
+      // Add user message
+      const userMessage: Message = {
+        id: `user-${Date.now()}`,
+        type: 'user',
+        content: prompt,
+        timestamp: new Date(),
+      };
+      
+      setMessages(prev => [...prev, userMessage]);
+      
+      // Add loading messages for selected models
+      const loadingMessages: Message[] = selectedModels.map(model => ({
+        id: `ai-${model.id}-${Date.now()}`,
+        type: 'ai',
+        content: '',
+        timestamp: new Date(),
+        modelName: model.name,
+        provider: model.provider,
+        isLoading: true,
+      }));
+      
+      setMessages(prev => [...prev, ...loadingMessages]);
+      
+      // Clear the prompt
+      setPrompt('');
+      
+      // Simulate AI responses (in real app, this would be API calls)
+      setTimeout(() => {
+        const aiResponses: Message[] = selectedModels.map(model => ({
+          id: `ai-${model.id}-${Date.now()}-response`,
+          type: 'ai',
+          content: `This is a simulated response from ${model.name}. In a real application, this would be the actual AI model response to your prompt: "${prompt}"`,
+          timestamp: new Date(),
+          modelName: model.name,
+          provider: model.provider,
+          isLoading: false,
+        }));
+        
+        setMessages(prev => {
+          // Remove loading messages and add actual responses
+          const withoutLoading = prev.filter(msg => !msg.isLoading);
+          return [...withoutLoading, ...aiResponses];
+        });
+      }, 2000);
     },
     onSelectAll: () => console.log('Select all clicked'),
     onClearAll: () => console.log('Clear all clicked'),
@@ -94,6 +141,7 @@ export const DashboardController: React.FC = () => {
       models={mockModels}
       selectedModels={selectedModels}
       prompt={prompt}
+      messages={messages}
       handlers={handlers}
     />
   );
