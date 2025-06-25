@@ -1,61 +1,70 @@
 import React from 'react';
-import { Card, CardContent, Typography, TextField } from '@mui/material';
-import { AutoFixHigh, Send } from '@mui/icons-material';
+import { TextField } from '@mui/material';
+import { Send } from '@mui/icons-material';
+import './PromptConfigurationSection.scss';
 
 export interface PromptConfigurationSectionProps {
   prompt: string;
   onPromptChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onSend?: () => void;
 }
 
 export const PromptConfigurationSection: React.FC<PromptConfigurationSectionProps> = ({
   prompt,
   onPromptChange,
+  onSend,
 }) => {
-  return (
-    <Card className="prompt-section">
-      <CardContent>
-        {/* Section Header */}
-        <div className="prompt-section__header">
-          <AutoFixHigh className="icon" />
-          <Typography variant="h6" className="title">
-            Prompt & Configuration
-          </Typography>
-        </div>
+  const handleSend = () => {
+    if (prompt.trim() && onSend) {
+      onSend();
+    }
+  };
 
-        {/* Chat-like Prompt Input */}
-        <div className="prompt-section__input-container">
-          {/* Main Input Area */}
+  const handleKeyPress = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      handleSend();
+    }
+  };
+
+  return (
+    <div className="chat-prompt">
+      <div className="chat-prompt__container">
+        <div className="chat-prompt__input-wrapper">
           <TextField
-            className="prompt-section__input"
-            placeholder="Enter your prompt to test across multiple AI models..."
+            className="chat-prompt__input"
+            placeholder="Message AI models..."
             value={prompt}
             onChange={onPromptChange}
+            onKeyDown={handleKeyPress}
             multiline
-            rows={4}
             variant="outlined"
             fullWidth
             slotProps={{
               input: {
-                sx: {
-                  fontSize: '14px',
-                  lineHeight: 1.5,
+                style: {
+                  maxHeight: '250px',
+                  overflowY: 'auto'
                 }
               }
             }}
           />
-
-          {/* Bottom Toolbar */}
-          <div className="prompt-section__toolbar">
-            <span className="character-count">{prompt.length} characters</span>
-            <button
-              className={`send-button ${prompt.trim() ? 'send-button--active' : ''}`}
-              disabled={!prompt.trim()}
-            >
-              <Send className="send-icon" />
-            </button>
-          </div>
+          {prompt.length > 0 && (
+            <div className="chat-prompt__character-count">
+              {prompt.length} characters
+            </div>
+          )}
         </div>
-      </CardContent>
-    </Card>
+        
+        <button
+          className={`chat-prompt__send-button ${prompt.trim() ? 'chat-prompt__send-button--active' : ''}`}
+          onClick={handleSend}
+          disabled={!prompt.trim()}
+          aria-label="Send message"
+        >
+          <Send className="send-icon" />
+        </button>
+      </div>
+    </div>
   );
 };

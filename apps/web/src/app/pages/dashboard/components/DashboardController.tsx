@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DashboardPresenter } from './DashboardPresenter';
 
 // In a real app, this data would come from a state management solution or an API call.
@@ -60,13 +60,24 @@ const mockModels = [
 ];
 
 export const DashboardController: React.FC = () => {
+  // State management for prompt
+  const [prompt, setPrompt] = useState('');
+  
   // This logic would be replaced by state management hooks (e.g., useState, useReducer)
   const selectedModels = mockModels.filter(model => model.isSelected);
 
   // These handlers would contain the actual application logic
   const handlers = {
     onSettingsClick: () => console.log('Settings clicked'),
-    onPromptChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => console.log('Prompt changed', event.target.value),
+    onPromptChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setPrompt(event.target.value);
+      console.log('Prompt changed', event.target.value);
+    },
+    onPromptSend: () => {
+      console.log('Prompt sent:', prompt);
+      // Optionally clear the prompt after sending
+      // setPrompt('');
+    },
     onSelectAll: () => console.log('Select all clicked'),
     onClearAll: () => console.log('Clear all clicked'),
     onPopularFilter: () => console.log('Popular filter clicked'),
@@ -82,6 +93,7 @@ export const DashboardController: React.FC = () => {
     <DashboardPresenter
       models={mockModels}
       selectedModels={selectedModels}
+      prompt={prompt}
       handlers={handlers}
     />
   );

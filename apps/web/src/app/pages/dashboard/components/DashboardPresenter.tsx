@@ -30,6 +30,7 @@ interface Model {
 interface Handlers {
   onSettingsClick: () => void;
   onPromptChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onPromptSend: () => void;
   onSelectAll: () => void;
   onClearAll: () => void;
   onPopularFilter: () => void;
@@ -44,12 +45,14 @@ interface Handlers {
 export interface DashboardPresenterProps {
   models: Model[];
   selectedModels: Model[];
+  prompt: string;
   handlers: Handlers;
 }
 
 export const DashboardPresenter: React.FC<DashboardPresenterProps> = ({
   models,
   selectedModels,
+  prompt,
   handlers,
 }) => {
   return (
@@ -57,8 +60,9 @@ export const DashboardPresenter: React.FC<DashboardPresenterProps> = ({
       <DashboardHeader onSettingsClick={handlers.onSettingsClick} />
       <Container maxWidth="xl" className="dashboard__content">
         <PromptConfigurationSection
-          prompt=""
+          prompt={prompt}
           onPromptChange={handlers.onPromptChange}
+          onSend={handlers.onPromptSend}
         />
         <ModelSelectionColumn
           selectedCount={selectedModels.length}
