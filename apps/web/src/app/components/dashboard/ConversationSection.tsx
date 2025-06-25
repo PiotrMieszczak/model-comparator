@@ -23,7 +23,13 @@ export const ConversationSection: React.FC<ConversationSectionProps> = ({
 
   // Auto-scroll to bottom when new messages are added
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest'
+      });
+    }
   }, [messages]);
 
   const getProviderClass = (provider?: string) => {

@@ -31,7 +31,7 @@ interface Model {
 // Define the shape of the handlers
 interface Handlers {
   onSettingsClick: () => void;
-  onPromptChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onPromptChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onPromptSend: () => void;
   onSelectAll: () => void;
   onClearAll: () => void;

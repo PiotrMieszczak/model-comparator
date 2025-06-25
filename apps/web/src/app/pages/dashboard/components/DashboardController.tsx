@@ -73,7 +73,7 @@ export const DashboardController: React.FC = () => {
   // These handlers would contain the actual application logic
   const handlers = {
     onSettingsClick: () => console.log('Settings clicked'),
-    onPromptChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    onPromptChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setPrompt(event.target.value);
       console.log('Prompt changed', event.target.value);
     },
