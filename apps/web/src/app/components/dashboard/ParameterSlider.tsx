@@ -1,4 +1,5 @@
 import React from 'react';
+import { Slider } from '@mui/material';
 import './ParameterSlider.scss';
 
 export interface ParameterSliderProps {
@@ -33,14 +34,15 @@ export const ParameterSlider: React.FC<ParameterSliderProps> = ({
       </div>
 
       {/* Slider */}
-      <input
-        type="range"
+      <Slider
         className="parameter-slider__input"
         value={value}
         min={min}
         max={max}
         step={step}
-        onChange={(e) => onChange(parseFloat(e.target.value))}
+        onChange={(_, newValue) => onChange(newValue as number)}
+        valueLabelDisplay="auto"
+        valueLabelFormat={formatValue}
         aria-label={label}
       />
     </div>

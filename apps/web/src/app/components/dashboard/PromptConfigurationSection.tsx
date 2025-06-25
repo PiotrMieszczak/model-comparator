@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography, TextField } from '@mui/material';
 import { AutoFixHigh, Send } from '@mui/icons-material';
 
 export interface PromptConfigurationSectionProps {
   prompt: string;
-  onPromptChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onPromptChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export const PromptConfigurationSection: React.FC<PromptConfigurationSectionProps> = ({
@@ -25,11 +25,23 @@ export const PromptConfigurationSection: React.FC<PromptConfigurationSectionProp
         {/* Chat-like Prompt Input */}
         <div className="prompt-section__input-container">
           {/* Main Input Area */}
-          <textarea
+          <TextField
             className="prompt-section__input"
             placeholder="Enter your prompt to test across multiple AI models..."
             value={prompt}
             onChange={onPromptChange}
+            multiline
+            rows={4}
+            variant="outlined"
+            fullWidth
+            slotProps={{
+              input: {
+                sx: {
+                  fontSize: '14px',
+                  lineHeight: 1.5,
+                }
+              }
+            }}
           />
 
           {/* Bottom Toolbar */}
