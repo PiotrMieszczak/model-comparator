@@ -1,5 +1,6 @@
 import React from 'react';
-import { Chip } from '@mui/material';
+import { Close } from '@mui/icons-material';
+import './ModelChip.scss';
 
 export interface ModelChipProps {
   id: string;
@@ -14,42 +15,31 @@ export const ModelChip: React.FC<ModelChipProps> = ({
   provider,
   onRemove,
 }) => {
-  const getProviderColor = (provider: string) => {
+  const getProviderClass = (provider: string) => {
     switch (provider.toLowerCase()) {
       case 'openai':
-        return 'primary';
+        return 'model-chip--openai';
       case 'anthropic':
-        return 'secondary';
+        return 'model-chip--anthropic';
       case 'google':
-        return 'success';
+        return 'model-chip--google';
       case 'meta':
-        return 'info';
+        return 'model-chip--meta';
       default:
-        return 'default';
+        return 'model-chip--default';
     }
   };
 
   return (
-    <Chip
-      label={name}
-      onDelete={() => onRemove(id)}
-      color={getProviderColor(provider) as any}
-      variant="filled"
-      size="small"
-      sx={{
-        maxWidth: '160px',
-        height: '24px',
-        fontSize: '11px',
-        '& .MuiChip-label': {
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-          px: 1,
-        },
-        '& .MuiChip-deleteIcon': {
-          fontSize: '14px',
-        },
-      }}
-    />
+    <div className={`model-chip ${getProviderClass(provider)}`}>
+      <span className="model-chip__label">{name}</span>
+      <button 
+        className="model-chip__delete" 
+        onClick={() => onRemove(id)}
+        aria-label="Remove model"
+      >
+        <Close sx={{ fontSize: 10 }} />
+      </button>
+    </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardContent, Typography } from '@mui/material';
+import './ParametersPanel.scss';
 
 export interface ParametersPanelProps {
   temperatureSlider: React.ReactNode;
@@ -13,19 +13,13 @@ export const ParametersPanel: React.FC<ParametersPanelProps> = ({
   topPSlider,
 }) => {
   return (
-    <Card sx={{ height: '100%' }}>
-      <CardContent>
-        <Typography variant="h6" sx={{ mb: 3, fontSize: '16px', fontWeight: 600 }}>
+    <div className="parameters-panel">
+      <div className="parameters-panel__content">
+        <h3 className="parameters-panel__title">
           Model Parameters
-        </Typography>
+        </h3>
         
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 3,
-          }}
-        >
+        <div className="parameters-panel__sliders">
           {/* Temperature */}
           {temperatureSlider}
 
@@ -34,8 +28,8 @@ export const ParametersPanel: React.FC<ParametersPanelProps> = ({
 
           {/* Top P */}
           {topPSlider}
-        </Box>
-      </CardContent>
-    </Card>
+        </div>
+      </div>
+    </div>
   );
 };

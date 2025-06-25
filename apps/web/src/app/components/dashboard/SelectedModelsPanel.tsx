@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardContent, Typography } from '@mui/material';
+import './SelectedModelsPanel.scss';
 
 export interface SelectedModelsPanelProps {
   selectedModels: React.ReactNode[];
@@ -11,34 +11,28 @@ export const SelectedModelsPanel: React.FC<SelectedModelsPanelProps> = ({
   costEstimator,
 }) => {
   return (
-    <Card sx={{ height: 'fit-content' }}>
-      <CardContent sx={{ pb: 2 }}>
-        <Typography variant="h6" sx={{ mb: 1.5, fontSize: '14px', fontWeight: 600 }}>
+    <div className="selected-models-panel">
+      <div className="selected-models-panel__content">
+        <h3 className="selected-models-panel__title">
           Selected Models ({selectedModels.length})
-        </Typography>
+        </h3>
         
         {/* Selected Model Chips */}
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 0.5,
-            mb: 1.5,
-            minHeight: '32px',
-          }}
-        >
+        <div className="selected-models-panel__chips">
           {selectedModels.length > 0 ? (
             selectedModels
           ) : (
-            <Typography variant="caption" color="text.secondary">
+            <span className="selected-models-panel__empty-state">
               No models selected
-            </Typography>
+            </span>
           )}
-        </Box>
+        </div>
 
         {/* Cost Estimator */}
-        {costEstimator}
-      </CardContent>
-    </Card>
+        <div className="selected-models-panel__cost-estimator">
+          {costEstimator}
+        </div>
+      </div>
+    </div>
   );
 };

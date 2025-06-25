@@ -1,0 +1,74 @@
+// Model Chip Styles
+// Import design system tokens
+@import '../../../../../../libs/design-system/src/styles/tokens/spacing';
+@import '../../../../../../libs/design-system/src/styles/tokens/colors';
+@import '../../../../../../libs/design-system/src/styles/tokens/typography';
+
+.model-chip {
+  display: inline-flex;
+  align-items: center;
+  max-width: 160px;
+  height: 24px;
+  padding: 0 $spacing-2;
+  border-radius: 12px;
+  border: none;
+  font-family: $font-family-primary;
+  font-size: 11px;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  cursor: pointer;
+  position: relative;
+
+  &__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    padding-left: $spacing-1;
+  }
+
+  &__delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    margin-left: $spacing-1;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: inherit;
+    cursor: pointer;
+    font-size: 10px;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  // Provider-specific colors
+  &--openai {
+    background-color: $primary-500;
+    color: white;
+  }
+
+  &--anthropic {
+    background-color: $color-text-secondary;
+    color: white;
+  }
+
+  &--google {
+    background-color: $success-500;
+    color: white;
+  }
+
+  &--meta {
+    background-color: #1877f2;
+    color: white;
+  }
+
+  &--default {
+    background-color: $gray-500;
+    color: white;
+  }
+}

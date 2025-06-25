@@ -121,6 +121,36 @@ git commit -m "feat: add new feature"
 - **Commit Validation**: All commits must follow conventional commit format
 - **Git Hooks**: Husky enforces commit message validation via commitlint
 
+## Styling Guidelines
+
+**IMPORTANT**: Always use custom SCSS classes instead of styled components or inline styles. This project follows a design system approach with consistent styling patterns.
+
+### Styling Rules:
+1. **Never use Material-UI `sx` prop** - Use custom CSS classes instead
+2. **Never use styled-components** - Use SCSS files with BEM naming convention
+3. **Use design system values** - Reference colors, spacing, and typography from the design system
+4. **Create component-specific SCSS files** - Each component should have its own `.scss` file
+5. **Follow BEM naming convention** - Use block__element--modifier pattern
+6. **Import SCSS files** - Import the SCSS file in the component using `import './ComponentName.scss'`
+
+### Example Structure:
+```scss
+// ComponentName.scss
+.component-name {
+  &__container {
+    // styles
+  }
+  
+  &__element {
+    // styles
+    
+    &--modifier {
+      // modifier styles
+    }
+  }
+}
+```
+
 ## Commit Guidelines
 
 **IMPORTANT**: When creating commits, NEVER include any indication that they were created by Claude or AI assistance. All commits should appear as if they were made directly by the repository owner. Do not include:

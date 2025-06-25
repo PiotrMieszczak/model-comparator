@@ -1,0 +1,48 @@
+// Selected Models Panel Styles
+// Import design system tokens
+@import '../../../../../../libs/design-system/src/styles/tokens/spacing';
+@import '../../../../../../libs/design-system/src/styles/tokens/colors';
+@import '../../../../../../libs/design-system/src/styles/tokens/typography';
+
+.selected-models-panel {
+  height: fit-content;
+  background: $color-surface;
+  border-radius: $spacing-2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid $color-border;
+
+  &__content {
+    padding: $spacing-4 $spacing-4 $spacing-2 $spacing-4;
+  }
+
+  &__title {
+    font-family: $font-family-primary;
+    font-size: $text-small-font-size;
+    line-height: $text-small-line-height;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-3 0;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-1;
+    margin-bottom: $spacing-3;
+    min-height: 32px;
+    align-items: center;
+  }
+
+  &__empty-state {
+    font-family: $font-family-primary;
+    font-size: $caption-font-size;
+    line-height: $caption-line-height;
+    font-weight: $caption-font-weight;
+    color: $color-text-secondary;
+    font-style: italic;
+  }
+
+  &__cost-estimator {
+    // Cost estimator styles will be handled by CostEstimator component
+  }
+}

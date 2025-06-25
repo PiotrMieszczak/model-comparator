@@ -1,0 +1,32 @@
+// Parameters Panel Styles
+// Import design system tokens
+@import '../../../../../../libs/design-system/src/styles/tokens/spacing';
+@import '../../../../../../libs/design-system/src/styles/tokens/colors';
+@import '../../../../../../libs/design-system/src/styles/tokens/typography';
+
+.parameters-panel {
+  height: 100%;
+  background: $color-surface;
+  border-radius: $spacing-2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid $color-border;
+
+  &__content {
+    padding: $spacing-4;
+  }
+
+  &__title {
+    font-family: $font-family-primary;
+    font-size: $text-base-font-size;
+    line-height: $text-base-line-height;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-6 0;
+  }
+
+  &__sliders {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+  }
+}

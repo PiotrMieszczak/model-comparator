@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
 import { AttachMoney } from '@mui/icons-material';
+import './CostEstimator.scss';
 
 export interface CostEstimatorProps {
   estimatedCost: string;
@@ -12,27 +12,18 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
   unit,
 }) => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 1,
-        p: 2,
-        backgroundColor: 'primary.50',
-        borderRadius: 1,
-        border: '1px solid',
-        borderColor: 'primary.200',
-      }}
-    >
-      <AttachMoney sx={{ color: 'primary.main', fontSize: 20 }} />
-      <Box>
-        <Typography variant="body2" sx={{ fontWeight: 600, color: 'primary.main' }}>
+    <div className="cost-estimator">
+      <div className="cost-estimator__icon">
+        <AttachMoney />
+      </div>
+      <div className="cost-estimator__content">
+        <div className="cost-estimator__cost">
           Est. cost: {estimatedCost}
-        </Typography>
-        <Typography variant="caption" color="text.secondary">
+        </div>
+        <div className="cost-estimator__unit">
           {unit}
-        </Typography>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };

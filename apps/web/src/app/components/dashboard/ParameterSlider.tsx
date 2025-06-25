@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Slider } from '@mui/material';
+import './ParameterSlider.scss';
 
 export interface ParameterSliderProps {
   label: string;
@@ -21,49 +21,28 @@ export const ParameterSlider: React.FC<ParameterSliderProps> = ({
   formatValue = (val) => val.toString(),
 }) => {
   return (
-    <Box>
+    <div className="parameter-slider">
       {/* Label and Current Value */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-        <Typography variant="body2" sx={{ fontWeight: 500 }}>
+      <div className="parameter-slider__header">
+        <span className="parameter-slider__label">
           {label}
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            color: 'primary.main',
-            fontWeight: 600,
-            minWidth: '60px',
-            textAlign: 'right',
-          }}
-        >
+        </span>
+        <span className="parameter-slider__value">
           {formatValue(value)}
-        </Typography>
-      </Box>
+        </span>
+      </div>
 
       {/* Slider */}
-      <Slider
+      <input
+        type="range"
+        className="parameter-slider__input"
         value={value}
         min={min}
         max={max}
         step={step}
-        onChange={(_, newValue) => onChange(newValue as number)}
-        valueLabelDisplay="auto"
-        valueLabelFormat={formatValue}
-        sx={{
-          color: 'primary.main',
-          '& .MuiSlider-thumb': {
-            width: 16,
-            height: 16,
-          },
-          '& .MuiSlider-track': {
-            height: 3,
-          },
-          '& .MuiSlider-rail': {
-            height: 3,
-            opacity: 0.3,
-          },
-        }}
+        onChange={(e) => onChange(parseFloat(e.target.value))}
+        aria-label={label}
       />
-    </Box>
+    </div>
   );
 };

@@ -1,0 +1,97 @@
+// Parameter Slider Styles
+// Import design system tokens
+@import '../../../../../../libs/design-system/src/styles/tokens/spacing';
+@import '../../../../../../libs/design-system/src/styles/tokens/colors';
+@import '../../../../../../libs/design-system/src/styles/tokens/typography';
+
+.parameter-slider {
+  margin-bottom: $spacing-4;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-2;
+  }
+
+  &__label {
+    font-family: $font-family-primary;
+    font-size: $text-small-font-size;
+    line-height: $text-small-line-height;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+    margin: 0;
+  }
+
+  &__value {
+    font-family: $font-family-primary;
+    font-size: $text-small-font-size;
+    line-height: $text-small-line-height;
+    font-weight: $font-weight-semibold;
+    color: $color-primary;
+    min-width: 60px;
+    text-align: right;
+    margin: 0;
+  }
+
+  &__input {
+    width: 100%;
+    height: 20px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+
+    &::-webkit-slider-track {
+      background: $gray-300;
+      height: 3px;
+      border-radius: 1.5px;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: $color-primary;
+      border: 2px solid white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      margin-top: -6.5px;
+
+      &:hover {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    &::-moz-range-track {
+      background: $gray-300;
+      height: 3px;
+      border-radius: 1.5px;
+      border: none;
+    }
+
+    &::-moz-range-thumb {
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: $color-primary;
+      border: 2px solid white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+      
+      &::-webkit-slider-thumb {
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+      }
+      
+      &::-moz-range-thumb {
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+      }
+    }
+  }
+}

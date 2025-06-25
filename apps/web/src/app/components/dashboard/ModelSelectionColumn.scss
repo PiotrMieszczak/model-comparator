@@ -1,0 +1,64 @@
+// Model Selection Column Styles
+// Import design system tokens
+@import '../../../../../../libs/design-system/src/styles/tokens/spacing';
+@import '../../../../../../libs/design-system/src/styles/tokens/colors';
+@import '../../../../../../libs/design-system/src/styles/tokens/typography';
+
+.model-selection-column {
+  display: flex;
+  gap: $spacing-2;
+  height: 100%;
+
+  &__models-section {
+    flex: 1 1 70%;
+    display: flex;
+    flex-direction: column;
+    background: $color-surface;
+    border-radius: $spacing-2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid $color-border;
+  }
+
+  &__header {
+    padding: $spacing-4 $spacing-4;
+
+    &-title {
+      font-family: $font-family-primary;
+      font-size: $h4-font-size;
+      line-height: $h4-line-height;
+      font-weight: $h4-font-weight;
+      letter-spacing: $h4-letter-spacing;
+      color: $color-text-primary;
+      margin: 0 0 $spacing-4 0;
+    }
+  }
+
+  &__cards-container {
+    flex: 1;
+    overflow: auto;
+    padding: 0 $spacing-2 $spacing-2 $spacing-2;
+    max-height: 500px;
+  }
+
+  &__cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: $spacing-3;
+  }
+
+  &__sidebar {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+  }
+
+  &__selected-models {
+    flex: 0 0 auto;
+  }
+
+  &__parameters {
+    flex: 1;
+  }
+}

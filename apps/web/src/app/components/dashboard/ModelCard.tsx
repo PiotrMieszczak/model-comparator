@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardContent, Typography, Checkbox, Chip } from '@mui/material';
+import { Checkbox, Chip } from '@mui/material';
+import './ModelCard.scss';
 
 export interface ModelCardProps {
   id: string;
@@ -38,11 +39,11 @@ export const ModelCard: React.FC<ModelCardProps> = ({
   };
 
   return (
-    <Card
+    <div
       className={`model-card ${isSelected ? 'model-card--selected' : ''}`}
       onClick={() => onSelectionChange(id, !isSelected)}
     >
-      <CardContent className="model-card__content">
+      <div className="model-card__content">
         {/* Header with checkbox and provider */}
         <div className="model-card__header">
           <Checkbox
@@ -60,25 +61,25 @@ export const ModelCard: React.FC<ModelCardProps> = ({
         </div>
 
         {/* Model name */}
-        <Typography variant="h6" className="model-card__name">
+        <h3 className="model-card__name">
           {name}
-        </Typography>
+        </h3>
 
         {/* Description */}
-        <Typography variant="body2" className="model-card__description">
+        <p className="model-card__description">
           {description}
-        </Typography>
+        </p>
 
         {/* Pricing and limits */}
         <div className="model-card__footer">
-          <Typography variant="body2" className="cost">
+          <div className="cost">
             {costPer1K}
-          </Typography>
-          <Typography variant="caption" className="tokens">
+          </div>
+          <div className="tokens">
             {tokenLimit}
-          </Typography>
+          </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };

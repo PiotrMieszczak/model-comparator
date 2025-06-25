@@ -3,9 +3,7 @@ import { Container } from '@mui/material';
 import {
   DashboardHeader,
   PromptConfigurationSection,
-  ModelAndParametersSection,
   ModelSelectionColumn,
-  ModelConfigurationColumn,
   ActionBar,
   SelectedModelsPanel,
   ParametersPanel,
@@ -62,81 +60,74 @@ export const DashboardPresenter: React.FC<DashboardPresenterProps> = ({
           prompt=""
           onPromptChange={handlers.onPromptChange}
         />
-        <ModelAndParametersSection
-          modelSelectionColumn={
-            <ModelSelectionColumn
-              selectedCount={selectedModels.length}
-              actionBar={
-                <ActionBar
-                  onSelectAll={handlers.onSelectAll}
-                  onClearAll={handlers.onClearAll}
-                  onPopularFilter={handlers.onPopularFilter}
-                  onRunComparison={handlers.onRunComparison}
-                  isRunDisabled={selectedModels.length === 0}
-                />
-              }
-              modelCards={models.map(model => (
-                <ModelCard
-                  key={model.id}
-                  {...model}
-                  onSelectionChange={handlers.onModelSelectionChange}
-                />
-              ))}
+        <ModelSelectionColumn
+          selectedCount={selectedModels.length}
+          actionBar={
+            <ActionBar
+              onSelectAll={handlers.onSelectAll}
+              onClearAll={handlers.onClearAll}
+              onPopularFilter={handlers.onPopularFilter}
+              onRunComparison={handlers.onRunComparison}
+              isRunDisabled={selectedModels.length === 0}
             />
           }
-          modelConfigurationColumn={
-            <ModelConfigurationColumn
-              selectedModelsPanel={
-                <SelectedModelsPanel
-                  selectedModels={selectedModels.map(model => (
-                    <ModelChip
-                      key={model.id}
-                      id={model.id}
-                      name={model.name}
-                      provider={model.provider}
-                      onRemove={() => handlers.onModelRemove(model.id)}
-                    />
-                  ))}
-                  costEstimator={
-                    <CostEstimator
-                      estimatedCost="$0.043"
-                      unit="per 1K tokens"
-                    />
-                  }
+      
+          modelCards={models.map(model => (
+            <ModelCard
+              key={model.id}
+              {...model}
+              onSelectionChange={handlers.onModelSelectionChange}
+            />
+          ))}
+          selectedModelsPanel={
+            <SelectedModelsPanel
+              selectedModels={selectedModels.map(model => (
+                <ModelChip
+                  key={model.id}
+                  id={model.id}
+                  name={model.name}
+                  provider={model.provider}
+                  onRemove={() => handlers.onModelRemove(model.id)}
+                />
+              ))}
+              costEstimator={
+                <CostEstimator
+                  estimatedCost="$0.043"
+                  unit="per 1K tokens"
                 />
               }
-              parametersPanel={
-                <ParametersPanel
-                  temperatureSlider={
-                    <ParameterSlider
-                      label="Temperature"
-                      value={0.7}
-                      min={0}
-                      max={2}
-                      step={0.1}
-                      onChange={handlers.onTemperatureChange}
-                    />
-                  }
-                  maxTokensSlider={
-                    <ParameterSlider
-                      label="Max Tokens"
-                      value={1000}
-                      min={1}
-                      max={4000}
-                      step={1}
-                      onChange={handlers.onMaxTokensChange}
-                    />
-                  }
-                  topPSlider={
-                    <ParameterSlider
-                      label="Top P"
-                      value={1}
-                      min={0}
-                      max={1}
-                      step={0.01}
-                      onChange={handlers.onTopPChange}
-                    />
-                  }
+            />
+          }
+          parametersPanel={
+            <ParametersPanel
+              temperatureSlider={
+                <ParameterSlider
+                  label="Temperature"
+                  value={0.7}
+                  min={0}
+                  max={2}
+                  step={0.1}
+                  onChange={handlers.onTemperatureChange}
+                />
+              }
+              maxTokensSlider={
+                <ParameterSlider
+                  label="Max Tokens"
+                  value={1000}
+                  min={1}
+                  max={4000}
+                  step={1}
+                  onChange={handlers.onMaxTokensChange}
+                />
+              }
+              topPSlider={
+                <ParameterSlider
+                  label="Top P"
+                  value={1}
+                  min={0}
+                  max={1}
+                  step={0.01}
+                  onChange={handlers.onTopPChange}
                 />
               }
             />

@@ -1,45 +1,57 @@
 import React from 'react';
-import { Box, Card, CardContent, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+import './ModelSelectionColumn.scss';
 
 export interface ModelSelectionColumnProps {
   actionBar: React.ReactNode;
   modelCards: React.ReactNode[];
   selectedCount: number;
+  parametersPanel: React.ReactNode;
+  selectedModelsPanel: React.ReactNode;
 }
 
 export const ModelSelectionColumn: React.FC<ModelSelectionColumnProps> = ({
   actionBar,
   modelCards,
   selectedCount,
+  parametersPanel,
+  selectedModelsPanel,
 }) => {
   return (
-    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <CardContent sx={{ pb: 1 }}>
-        <Typography variant="h6" sx={{ mb: 2 }}>
-          Select Models to Compare ({selectedCount} selected)
-        </Typography>
-        {actionBar}
-      </CardContent>
+    <div className="model-selection-column">
+      {/* Left Column - Model Cards (3 per row, scrollable) */}
+      <div className="model-selection-column__models-section">
+        <div className="model-selection-column__header">
+          <Typography className="model-selection-column__header-title">
+            Select Models to Compare ({selectedCount} selected)
+          </Typography>
+          {actionBar}
+        </div>
 
-      {/* Scrollable Model Cards */}
-      <Box
-        sx={{
-          flex: 1,
-          overflow: 'auto',
-          px: 2,
-          pb: 2,
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-          }}
-        >
-          {modelCards}
-        </Box>
-      </Box>
-    </Card>
+        {/* Scrollable Model Cards - 3 per row */}
+        <div className="model-selection-column__cards-container">
+          <div className="model-selection-column__cards-grid">
+            {(modelCards as React.ReactElement[]).map((card) => (
+              <div key={card.key}>
+                {card}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Right Column - Selected Models + Parameters (compact) */}
+      <div className="model-selection-column__sidebar">
+        {/* Selected Models Panel */}
+        <div className="model-selection-column__selected-models">
+          {selectedModelsPanel}
+        </div>
+
+        {/* Parameters Panel */}
+        <div className="model-selection-column__parameters">
+          {parametersPanel}
+        </div>
+      </div>
+    </div>
   );
 };
