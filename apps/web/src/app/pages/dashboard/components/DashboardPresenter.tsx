@@ -63,12 +63,12 @@ export const DashboardPresenter: React.FC<DashboardPresenterProps> = ({
     <div className="dashboard">
       <DashboardHeader onSettingsClick={handlers.onSettingsClick} />
       <Container maxWidth="xl" className="dashboard__content">
+        <ConversationSection messages={messages} />
         <PromptConfigurationSection
           prompt={prompt}
           onPromptChange={handlers.onPromptChange}
           onSend={handlers.onPromptSend}
         />
-        <ConversationSection messages={messages} />
         <ModelSelectionColumn
           selectedCount={selectedModels.length}
           actionBar={
