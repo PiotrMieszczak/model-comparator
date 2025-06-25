@@ -105,44 +105,22 @@ model-comparator/
 │       └── project.json
 │
 ├── 📚 libs/                          # Shared Libraries
-│   ├── shared-types/                 # TypeScript Interfaces & Types
-│   │   └── src/lib/
-│   │       ├── auth.types.ts
-│   │       ├── user.types.ts
-│   │       ├── ai-provider.types.ts
-│   │       └── comparison.types.ts
+│   ├── design-system/                # React Component Library
+│   │   ├── src/
+│   │   │   ├── components/
+│   │   │   │   ├── FormField.tsx
+│   │   │   │   ├── PasswordField.tsx
+│   │   │   │   └── SocialButton.tsx
+│   │   │   ├── styles/              # SCSS Styles
+│   │   │   └── index.ts             # Library Entry Point
+│   │   └── project.json
 │   │
-│   ├── shared-utils/                 # Common Utilities
-│   │   └── src/lib/
-│   │       ├── validation.ts
-│   │       ├── encryption.ts
-│   │       ├── date-helpers.ts
-│   │       └── api-client.ts
-│   │
-│   ├── ui-components/                # Custom React Components (HeroUI-based)
-│   │   └── src/lib/
-│   │       ├── CustomButton/     # Extended HeroUI Button
-│   │       ├── ComparisonTable/  # Data table for AI comparisons
-│   │       ├── UsageChart/       # Analytics charts
-│   │       └── Layout/           # App layout components
-│   │
-│   ├── auth/                         # Authentication Business Logic
-│   │   └── src/lib/
-│   │       ├── auth.service.ts
-│   │       ├── jwt.service.ts
-│   │       └── oauth.service.ts
-│   │
-│   ├── database/                     # Database Access Layer
-│   │   └── src/lib/
-│   │       ├── entities/            # Database Models
-│   │       ├── repositories/        # Data Access Objects
-│   │       └── migrations/          # Database Migrations
-│   │
-│   └── ai-providers/                 # AI Provider Integration
-│       └── src/lib/
-│           ├── providers/           # Individual Provider Classes
-│           ├── comparison.service.ts
-│           └── token-calculator.ts
+│   └── shared/                       # Shared Types & Interfaces
+│       ├── src/
+│       │   ├── types/
+│       │   │   └── auth.types.ts
+│       │   └── index.ts             # Library Entry Point
+│       └── project.json
 │
 ├── 🐳 Infrastructure Files
 │   ├── Dockerfile                    # Container Configuration
@@ -236,7 +214,23 @@ graph TB
 - **Routing**: React Router v6
 - **HTTP Client**: Axios
 - **Charts**: Recharts for usage analytics
-- **Icons**: Lucide React (included with HeroUI)# AI Model Comparison App
+- **Icons**: Lucide React (included with HeroUI)
+
+### Using the Design System
+Our `design-system` library provides reusable React components that are shared across the web application.
+
+#### Importing Components
+To use a component, import it directly from the library's entry point:
+```typescript
+import { FormField, PasswordField, SocialButton } from '@model-comparator/design-system';
+```
+
+#### Available Components
+- `FormField`: A standard text input field with a label.
+- `PasswordField`: A password input field with a show/hide toggle.
+- `SocialButton`: A button for social logins (e.g., Google, GitHub).
+
+# AI Model Comparison App
 
 ### Backend (Node.js)
 - **Framework**: Express.js with TypeScript
