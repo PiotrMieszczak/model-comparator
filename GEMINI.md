@@ -6,11 +6,14 @@ This file provides guidance to Gemini when working with code in this repository.
 
 - ALWAYS create a plan of action, before coding.
 - ALWAYS correct user if he is wrong.
+- ALWAYS use the analysis technique from `five-why-rule.md` to deeply understand problems.
+- ALWAYS use the information from `vitest-rules.md` when creating Vitest tests.
 
 On first interaction, please perform the following actions to understand the project context:
 1. Read `GEMINI.md` (this file).
 2. Read `README.md`.
 3. Run `git ls-files` to get a complete list of project files.
+4. Read all files in the `ai-docs-global` directory.
 
 ---
 
